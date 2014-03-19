@@ -1,0 +1,45 @@
+;; User keymap
+;; -----------------------------
+;; Keymaps are stored as a set of diffs that are merged together together
+;; to create the final set of keys. You can modify these diffs to either add
+;; or subtract bindings.
+;;
+;; Like behaviors, keys are bound by tag. When objects with those tags are active
+;; the key bindings are live. Keys can be bound to any number of Light Table commands,
+;; allowing you the flexibility to execute multiple operations together. To see a list
+;; of all the commands you can execute, start typing a word related to the thing you
+;; want to do in between the square brackets (e.g. type "editor").
+
+{:+ {:app {}
+
+     :editor {"alt-w" [:editor.watch.watch-selection]
+              "alt-shift-w" [:editor.watch.unwatch]}
+     :editor.clj.common {
+                   ;; moving in a sea of parens - jh
+                  "ctrl-right" [:subpar.move.forward]
+                  "ctrl-left" [:subpar.move.backward]
+                  "ctrl-down" [:subpar.move.forward-down]
+                  "ctrl-up" [:subpar.move.forward-up]
+                  ;; grow and shrink - jh
+                  "ctrl-)" [:paredit.grow.right]
+                  "ctrl-}" [:paredit.shrink.right]
+                  "ctrl-(" [:paredit.grow.left]
+                  "ctrl-{" [:paredit.shrink.left]
+                  ;; splice & kill
+                  "alt-s" [:paredit-plus.splice-sexp] ;; remove 1 level of surrounding parens
+                  "alt-up" [:paredit-plus.splice-sexp-killing-backward]
+                  "alt-down" [:paredit-plus.splice-sexp-killing-forward]
+                  "ctrl-k" [:paredit-plus.kill]
+                  ;; split & join - jh
+                  "alt-shift-s" [:paredit-plus.split-sexp]
+                  "alt-shift-j" [:paredit-plus.join-sexps]
+                  ;; select
+                  "alt-a" [:paredit.select.parent]
+                  "alt-shift-a" [:paredit.select.clear]
+                  ;; wrap in parens
+                  "alt-(" [:paredit-plus.wrap-round]
+                  "alt-[" [:paredit-plus.wrap-square]
+                  "alt-{" [:paredit-plus.wrap-curly]
+                  "alt-'" [:paredit-plus.wrap-quote]}
+     }
+   }
