@@ -37,7 +37,8 @@
                   [lein-try "0.4.1"]
                   [lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
                   [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
-                  [quickie "0.2.6"] ; autotest for clojure.test
+                  ;;[quickie "0.2.6"] ; autotest for clojure.test
+                  [com.jakemccrary/lein-test-refresh "0.3.4"] ;; autotest: lein test-refresh :growl
                   [lein-light "0.0.44"] ; LightTable: `lein light` in a prj
                   ]}
        :repl-options {:nrepl-middleware
