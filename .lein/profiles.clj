@@ -8,6 +8,7 @@
                        [nrepl-inspect "0.4.1"]    ; for wrap-inspect, Emacs
                        [ritz/ritz-nrepl-middleware "0.7.0"]
                        [night-vision "0.1.0-SNAPSHOT"] ;; print input/output of each call in a ns; see (night-vision.goggles/introspect-ns! '<your ns>)
+                       [leiningen "2.3.4"] ;; Vinyasa needs this, must match my lein version
                        ]
         ;; "Copy" the given function to clojure.core (and thus all namespaces), prefixed with > => (>doc ..)
         :injections [(require 'vinyasa.inject) ;; TODO check also vinyasa/pull, lein, reimport
@@ -17,6 +18,8 @@
                      (vinyasa.inject/inject 'clojure.core '>
                        '[[clojure.repl doc source]
                          [clojure.pprint pprint pp]
+                         [vinyasa.pull pull]
+                         [vinyasa.lein lein]
                          [alex-and-georges.debug-repl debug-repl]
                          [com.georgejahad.difform difform]
                          [clj-ns-browser.sdoc sdoc]])
