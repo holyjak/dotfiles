@@ -20,6 +20,7 @@
 ;;              (:lt.plugins.emacs/activate-emacs)
                 (:lt.objs.editor/highlight-current-line)
               (:lt.plugins.rainbow/hide-rainbow-parens)
+              (:lt.objs.editor/line-numbers)
 ]
 
      ;; Here we can add behaviors to just clojure editors
