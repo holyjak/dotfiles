@@ -9,13 +9,17 @@
                        [ritz/ritz-nrepl-middleware "0.7.0"]
                        [night-vision "0.1.0-SNAPSHOT"] ;; print input/output of each call in a ns; see (night-vision.goggles/introspect-ns! '<your ns>)
                        [leiningen "2.3.4"] ;; Vinyasa needs this, must match my lein version
+                       [alembic "0.2.1"]   ;; reload new deps from project.clj
+                       [slamhound "1.5.2"] ;; optimize and add missing requires/imports in .clj files - see aliases below or editor-specific plugins or run from repl
+                       [io.aviso/pretty "0.1.10"] ;; nrepl/pretty-middleware for exceptions
+                       ;; from REPL: (slam.hound/-main "src/my/namespace.clj")
                        ]
-        ;; "Copy" the given function to clojure.core (and thus all namespaces), prefixed with > => (>doc ..)
+
         :injections [(require 'vinyasa.inject) ;; TODO check also vinyasa/pull, lein, reimport
                      (require 'alex-and-georges.debug-repl)
                      (require 'com.georgejahad.difform)
                      (require 'clj-ns-browser.sdoc)
-                     (vinyasa.inject/inject 'clojure.core '>
+                     (vinyasa.inject/inject 'clojure.core '> ;; "Copy" the given function to clojure.core (and thus all namespaces), prefixed with > => (>doc ..)
                        '[[clojure.repl doc source]
                          [clojure.pprint pprint pp]
                          [vinyasa.pull pull]
@@ -38,13 +42,18 @@
                   [lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
                   [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
                   ;;[quickie "0.2.6"] ; autotest for clojure.test
-                  [com.jakemccrary/lein-test-refresh "0.3.4"] ;; autotest: lein test-refresh :growl
+                  [com.jakemccrary/lein-test-refresh "0.3.4"] ;; autotest: lein test-refresh :growl ; weak results reporting :-(
                   [lein-light "0.0.44"] ; LightTable: `lein light` in a prj
-                  ]}
-       :repl-options {:nrepl-middleware
-                       [
-                        ;inspector.middleware/wrap-inspect
-                        ritz.nrepl.middleware.javadoc/wrap-javadoc
-                        ritz.nrepl.middleware.apropos/wrap-apropos
-                        ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
- }
+                  ]
+        :aliases {
+                  "slamhound" ["run" "-m" "slam.hound"] ;; => lein slamhound <file or dir>
+                  }
+        :repl-options {:nrepl-middleware
+                      [
+                       ;inspector.middleware/wrap-inspect
+                       ritz.nrepl.middleware.javadoc/wrap-javadoc
+                       ritz.nrepl.middleware.apropos/wrap-apropos
+                       ritz.nrepl.middleware.simple-complete/wrap-simple-complete
+                       io.aviso.nrepl/pretty-middleware ;; pretty-print exceptions in repl
+                       ]}
+ }}
