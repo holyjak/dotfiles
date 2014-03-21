@@ -7,18 +7,20 @@
                        [clj-ns-browser "1.3.1"]
                        [nrepl-inspect "0.4.1"]    ; for wrap-inspect, Emacs
                        [ritz/ritz-nrepl-middleware "0.7.0"]
-                       [night-vision "0.1.0-SNAPSHOT"] ;; print input/output of each call in a ns; see (night-vision.goggles/introspect-ns! '<your ns>)
+                       ;;[night-vision "0.1.0-SNAPSHOT"] ;; print input/output of each call in a ns; see (night-vision.goggles/introspect-ns! '<your ns>)
                        [leiningen "2.3.4"] ;; Vinyasa needs this, must match my lein version
                        [alembic "0.2.1"]   ;; reload new deps from project.clj
                        [slamhound "1.5.2"] ;; optimize and add missing requires/imports in .clj files - see aliases below or editor-specific plugins or run from repl
                        [io.aviso/pretty "0.1.10"] ;; nrepl/pretty-middleware for exceptions
                        ;; from REPL: (slam.hound/-main "src/my/namespace.clj")
+                       [org.clojure/tools.trace "0.7.8"] ;; trace calls to fns (in+out), forms execution, ...
                        ]
 
         :injections [(require 'vinyasa.inject) ;; TODO check also vinyasa/pull, lein, reimport
                      (require 'alex-and-georges.debug-repl)
                      (require 'com.georgejahad.difform)
                      (require 'clj-ns-browser.sdoc)
+                     (require 'clojure.tools.trace)
                      (vinyasa.inject/inject 'clojure.core '> ;; "Copy" the given function to clojure.core (and thus all namespaces), prefixed with > => (>doc ..)
                        '[[clojure.repl doc source]
                          [clojure.pprint pprint pp]
@@ -26,9 +28,9 @@
                          [vinyasa.lein lein]
                          [alex-and-georges.debug-repl debug-repl]
                          [com.georgejahad.difform difform]
-                         [clj-ns-browser.sdoc sdoc]])
-                     (require 'spyscope.core)
-                     (require 'night-vision.goggles)]
+                         [clj-ns-browser.sdoc sdoc]
+                         [clojure.tools.trace trace deftrace trace-forms trace-ns trace-vars]])
+                     (require 'spyscope.core)]
         :plugins [
                   [lein-catnip "0.5.1"]
                   ;;[codox "0.6.1"]                     ; document. generation from src
