@@ -21,6 +21,7 @@
                 (:lt.objs.editor/highlight-current-line)
               (:lt.plugins.rainbow/hide-rainbow-parens)
               (:lt.objs.editor/line-numbers)
+         ;;   (:lt.objs.style/font-settings "Ubuntu Mono" 11 2)
 ]
 
      ;; Here we can add behaviors to just clojure editors
