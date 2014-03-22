@@ -1,3 +1,4 @@
+
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 {:user {:dependencies [
                        [org.clojars.gjahad/debug-repl "0.3.3"]
@@ -8,7 +9,7 @@
                        [nrepl-inspect "0.4.1"]    ; for wrap-inspect, Emacs
                        [ritz/ritz-nrepl-middleware "0.7.0"]
                        ;;[night-vision "0.1.0-SNAPSHOT"] ;; print input/output of each call in a ns; see (night-vision.goggles/introspect-ns! '<your ns>)
-                       [leiningen "2.3.4"] ;; Vinyasa needs this, must match my lein version
+                       ;;[leiningen "2.3.4"] ;; Vinyasa needs this, must match my lein version x see vinyasa/issues/3
                        [alembic "0.2.1"]   ;; reload new deps from project.clj
                        [slamhound "1.5.2"] ;; optimize and add missing requires/imports in .clj files - see aliases below or editor-specific plugins or run from repl
                        [io.aviso/pretty "0.1.10"] ;; nrepl/pretty-middleware for exceptions
@@ -25,7 +26,7 @@
                        '[[clojure.repl doc source]
                          [clojure.pprint pprint pp]
                          [vinyasa.pull pull]
-                         [vinyasa.lein lein]
+                         ;[vinyasa.lein lein]
                          [alex-and-georges.debug-repl debug-repl]
                          [com.georgejahad.difform difform]
                          [clj-ns-browser.sdoc sdoc]
@@ -41,11 +42,12 @@
                   [lein-marginalia "0.7.1"]
                   [lein-ancient "0.5.4"]
                   [lein-try "0.4.1"]
-                  [lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
+                  ;;[lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
                   [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
                   ;;[quickie "0.2.6"] ; autotest for clojure.test
                   [com.jakemccrary/lein-test-refresh "0.3.4"] ;; autotest: lein test-refresh :growl ; weak results reporting :-(
                   [lein-light "0.0.44"] ; LightTable: `lein light` in a prj
+                  [jonase/eastwood "0.1.1"] ; linter: lein eastwood
                   ]
         :aliases {
                   "slamhound" ["run" "-m" "slam.hound"] ;; => lein slamhound <file or dir>
