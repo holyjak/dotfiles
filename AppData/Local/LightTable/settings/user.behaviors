@@ -17,8 +17,8 @@
      ;; The editor tag is applied to all editors
      :editor [:lt.objs.editor/no-wrap
               (:lt.objs.style/set-theme "default")
-;;              (:lt.plugins.emacs/activate-emacs)
-                (:lt.objs.editor/highlight-current-line)
+              ;;              (:lt.plugins.emacs/activate-emacs)
+              ;;(:lt.objs.editor/highlight-current-line) ;; perf. problems ?!
               (:lt.plugins.rainbow/hide-rainbow-parens)
               (:lt.objs.editor/line-numbers)
          ;;   (:lt.objs.style/font-settings "Ubuntu Mono" 11 2)
@@ -28,9 +28,11 @@
      :editor.clojure [(:lt.objs.langs.clj/print-length 1000)]
 
      :files [(:lt.objs.files/file-types [
+                                         {:name "EDN" :exts [:edn] :mime "text/x-clojure" :tags [:editor.clojure]}
                                          {:name "Puppet" :exts [:pp] :mime "text/x-ruby" :tags [:editor.ruby]}
                                          {:name "Gradle" :exts [:gradle] :mime "text/x-groovy" :tags [:editor.groovy]}])]
 
+     :console [(:lt.objs.console/set-console-limit 5000)]
      }
  ;; You can use the subtract key to remove behavior that may get added by
  ;; another diff

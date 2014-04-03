@@ -29,6 +29,7 @@
 ;;                              :editor.line-start
 ;;                              :editor.paste]
               "ctrl-a" [:editor.line-start-smart]
+              "ctrl-o" [:navigate-workspace] ;; stopped working => must add manually
               }
      :editor.clj.common {
                    ;; moving in a sea of parens - jh
