@@ -14,6 +14,8 @@
 ;; ------------------
 ;; Left Alt (Option_L) rempped to cmd-ctrl-alt (r. alt enters accented chars)
 ;; (using KeyRemap4MacBook)
+
+;; TODO check out https://gist.github.com/rarous/07038b3c3ab96567c6f5
 {:+ {:app {}
 
      :editor {"cmd-ctrl-alt-w" [:editor.watch.watch-selection]
@@ -51,7 +53,7 @@
                   "cmd-ctrl-alt-shift-s" [:paredit-plus.split-sexp]
                   "cmd-ctrl-alt-shift-j" [:paredit-plus.join-sexps]
                   ;; select
-                  "cmd-ctrl-alt-a" [:paredit.select.parent]
+                  "cmd-ctrl-alt-a" [:paredit.select.parent]         ; Cursive/II: alt-up
                   "cmd-ctrl-alt-shift-a" [:paredit.select.clear]
                   ;; wrap in parens
                   "cmd-ctrl-alt-shift-9" [:paredit-plus.wrap-round] ;; l.alt-(
