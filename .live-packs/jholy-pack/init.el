@@ -164,6 +164,23 @@
 (setq exec-path
       (cons "/usr/local/share/npm/bin/jshint" exec-path)) ;; jshint for flymake
 
+;;; Show pretty symbols instead of 'function' etc., see
+;; http://ergoemacs.org/emacs/emacs_pretty_lambda.html
+(global-prettify-symbols-mode 1) ;; “lambda” as “λ” by default
+(defun my-add-pretty-lambda ()
+  "make some word or string show as pretty Unicode symbols"
+  (setq prettify-symbols-alist
+        '(
+          ("lambda" . 955) ; λ
+          ("function" . 955) ; λ
+          ("->" . 8594)    ; →
+          ("=>" . 8658)    ; ⇒
+          ("map" . 8614)   ; ↦
+          )))
+
+(add-hook 'clojure-mode-hook 'my-add-pretty-lambda)
+(add-hook 'js2-mode-hook 'my-add-pretty-lambda)
+
 ;;; CLOJURE
 
 
