@@ -127,6 +127,9 @@
   :init (add-hook 'js2-mode-hook 'ac-js2-mode))
 (use-package nodejs-repl
   :ensure t)
+(use-package dash
+  :ensure t
+  :init (eval-after-load "dash" '(dash-enable-font-lock)))
 
 ;; see https://github.com/ergoemacs/ergoemacs-mode/issues/333
 ;; FIXME DOES NOT WORK

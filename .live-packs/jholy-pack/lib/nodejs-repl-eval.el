@@ -9,16 +9,29 @@
 ;;; Code:
 (require 'js2-mode)
 (require 'nodejs-repl)
+(require 'dash)
 
-(defun nodejs-repl--sanitize-lodash (text)
-  "Replace _. with $_. because _ is a special variable in Node.js"
-  (replace-regexp-in-string "\\_<_\\." "$_." text))
+;; (->> "var _ = require('lodash');
+;;       _.chain(x)
+;;       .map(myfn);"
+;;   (nodejs-repl--sanitize-code))
+
+(defun nodejs-repl--sanitize-code (text)
+  "Avoid conflicts with REPL special constructs: _ and .command"
+  (->> text
+    ;; If there is a chained call on a new line, move the dot to the previous line;
+    ;; the repl executes lines eagerly and interprets " .something" as a REPL command
+    (replace-regexp-in-string "\n\\(\\s-*\\)\\.\\(\\w+\\)" ".\n\\1\\2")
+    ;; Replace _ with __ because underscore is a special thing in the REPL
+    (replace-regexp-in-string "\\_<_\\." "__.")
+    ;; Replace var _ = require ... with var __ = ...
+    (replace-regexp-in-string "var\\s-+_\\s-+=" "var __ =")))
 
 (defun nodejs-repl-eval-region (start end)
   "Evaluate the region specified by `START' and `END'."
   (let ((proc (get-process nodejs-repl-process-name)))
     (comint-simple-send proc
-                        (nodejs-repl--sanitize-lodash
+                        (nodejs-repl--sanitize-code
                          (buffer-substring-no-properties start end)))))
 
 (defun nodejs-repl-eval-node (node)
