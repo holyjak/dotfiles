@@ -120,7 +120,13 @@
               ("C-e" . ergoemacs-end-of-line-or-what)
               ("M-n" . ergoemacs-beginning-or-end-of-buffer) ; re-bind, was bound to outline-next-visible-heading from outline.el
               ("M-/" . dabbrev-expand) ;; rebind from toggle case
-                            ))
+              ))
+(use-package ac-js2 // better autoc., navigate to symbol; support for Company mode on itsway
+  ;; It binds M-. to jump to definition, M-, to go back
+  :ensure t
+  :init (add-hook 'js2-mode-hook 'ac-js2-mode))
+(use-package nodejs-repl
+  :ensure t)
 
 ;; see https://github.com/ergoemacs/ergoemacs-mode/issues/333
 ;; FIXME DOES NOT WORK
@@ -180,6 +186,10 @@
 
 (add-hook 'clojure-mode-hook 'my-add-pretty-lambda)
 (add-hook 'js2-mode-hook 'my-add-pretty-lambda)
+
+;;; NODEJS-REPL
+(live-add-pack-lib "nodejs-repl-eval")
+(require 'nodejs-repl-eval)
 
 ;;; CLOJURE
 
