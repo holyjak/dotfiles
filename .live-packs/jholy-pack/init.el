@@ -131,16 +131,6 @@
 (use-package dash
   :ensure t
   :init (eval-after-load "dash" '(dash-enable-font-lock)))
-;; Better fuzzy search for ido, recommended by Projectile
-;; Limitations: Heml not supported as of 2015-03-10
-(use-package flx-ido
-  :ensure t
-  :init (progn
-          ;; Assumed: (ido-mode 1) (ido-everywhere 1)
-          (flx-ido-mode 1)
-          ;; disable ido faces to see flx highlights.
-          (setq ido-enable-flex-matching t)
-          (setq ido-use-faces nil)))
 
 ;; see https://github.com/ergoemacs/ergoemacs-mode/issues/333
 ;; FIXME DOES NOT WORK
@@ -165,8 +155,9 @@
 ;; (electric-layout-mode 1)
 
 ;;;; JavaScript (js2-mode) ...........................
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;;(autoload 'js2-mode "js2-mode" nil t)    <-- not needed, done by EL lang pack?!
+;;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode)) ;; React.js JSX files
 
 ;; See https://github.com/puppetlabs/puppet-syntax-emacs
 (live-add-pack-lib "puppet-mode")
