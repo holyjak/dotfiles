@@ -24,18 +24,14 @@
 ;;; - Create new file: C-z to go back to prev. proposal, C-j to create the typed path if it doesn't exist w/o switching
 ;;; ---
 
-;;; TODO Ergoemacs
-;; [home], [end] key replacement?
-;; [menu] key?!
-
-
 ;;; JH: TODO - try - Interestig packages
-;; Try http://www.emacswiki.org/emacs/OneKey
+;; Try Hydra! https://github.com/abo-abo/hydra/ //Try http://www.emacswiki.org/emacs/OneKey - last updated 2012, not in Melpa :-(
 ;; Try Tab Bar Mode for non-emacser friendliness
-;; rm outdated iswitchb
-;; better autocompletion - see ohai/Jakob
+;; rm outdated iswitchb?!
+;; better autocompletion - see ohai or Jakob's
 ;; ? JS test results in Emacs
 ;; Open files via projectile by default?
+;; https://github.com/Fuco1/smartparens looks nice
 
 ;;;; TODO Eventually
 ;; ?? https://github.com/nonsequitur/smex
@@ -120,16 +116,31 @@
               ("C-e" . ergoemacs-end-of-line-or-what)
               ("M-n" . ergoemacs-beginning-or-end-of-buffer) ; re-bind, was bound to outline-next-visible-heading from outline.el
               ("M-/" . dabbrev-expand) ;; rebind from toggle case
+              ("C-M-o" . projectile-find-file)
               ))
 (use-package ac-js2 // better autoc., navigate to symbol; support for Company mode on itsway
   ;; It binds M-. to jump to definition, M-, to go back
   :ensure t
   :init (add-hook 'js2-mode-hook 'ac-js2-mode))
 (use-package nodejs-repl
-  :ensure t)
+             :ensure t
+             :init (progn
+                     (live-add-pack-lib "nodejs-repl-eval")
+                     (require 'nodejs-repl-eval)
+                     (define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-eval-dwim)))
 (use-package dash
   :ensure t
   :init (eval-after-load "dash" '(dash-enable-font-lock)))
+;; Better fuzzy search for ido, recommended by Projectile
+;; Limitations: Heml not supported as of 2015-03-10
+(use-package flx-ido
+  :ensure t
+  :init (progn
+          ;; Assumed: (ido-mode 1) (ido-everywhere 1)
+          (flx-ido-mode 1)
+          ;; disable ido faces to see flx highlights.
+          (setq ido-enable-flex-matching t)
+          (setq ido-use-faces nil)))
 
 ;; see https://github.com/ergoemacs/ergoemacs-mode/issues/333
 ;; FIXME DOES NOT WORK
@@ -189,10 +200,6 @@
 
 (add-hook 'clojure-mode-hook 'my-add-pretty-lambda)
 (add-hook 'js2-mode-hook 'my-add-pretty-lambda)
-
-;;; NODEJS-REPL
-(live-add-pack-lib "nodejs-repl-eval")
-(require 'nodejs-repl-eval)
 
 ;;; CLOJURE
 

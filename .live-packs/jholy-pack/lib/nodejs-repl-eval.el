@@ -12,20 +12,24 @@
 (require 'dash)
 
 ;; (->> "var _ = require('lodash');
-;;       _.chain(x)
+;;       _.chain(x)   // a comment here
+;;       .filter('defined')
 ;;       .map(myfn);"
 ;;   (nodejs-repl--sanitize-code))
 
 (defun nodejs-repl--sanitize-code (text)
   "Avoid conflicts with REPL special constructs: _ and .command"
   (->> text
+    ;; obj EOL .fn() => obj. EOL fn() (while also removing "// comments")
     ;; If there is a chained call on a new line, move the dot to the previous line;
     ;; the repl executes lines eagerly and interprets " .something" as a REPL command
-    (replace-regexp-in-string "\n\\(\\s-*\\)\\.\\(\\w+\\)" ".\n\\1\\2")
+    (replace-regexp-in-string "\\(//.*\\)?\n\\(\\s-*\\)\\.\\(\\w+\\)" ".\n\\2\\3")
     ;; Replace _ with __ because underscore is a special thing in the REPL
     (replace-regexp-in-string "\\_<_\\." "__.")
     ;; Replace var _ = require ... with var __ = ...
-    (replace-regexp-in-string "var\\s-+_\\s-+=" "var __ =")))
+    (replace-regexp-in-string "var\\s-+_\\s-+=" "var __ =")
+    ))
+
 
 (defun nodejs-repl-eval-region (start end)
   "Evaluate the region specified by `START' and `END'."

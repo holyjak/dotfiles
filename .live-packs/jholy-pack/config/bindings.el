@@ -10,8 +10,8 @@
 ;; Text scale adjust: bound by def. to C-x C--, C-x C-+; depends on last char: 0/+/-/=
 ;(global-set-key "\M-+" 'text-scale-adjust)
 ;(global-set-key "\M--" 'text-scale-adjust)
-;;(define-key global-map (kbd "C-+") 'text-scale-increase)
-;;(define-key global-map (kbd "C--") 'text-scale-decrease)
+(define-key global-map (kbd "M-+") 'text-scale-increase)
+(define-key global-map (kbd "M--") 'text-scale-decrease)
 
 ;; Jump to word-start character
 ;;(define-key global-map (kbd "C-ø") 'ace-jump-mode)
@@ -36,8 +36,6 @@
 (require 'clojure-test-mode)
 (define-key clojure-test-mode-map [f12] 'clj-save-and-test)
 
-(require 'nodejs-repl-eval)
-(define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-eval-dwim)
 ;;(require 'strokes)
 ;;(define-key strokes-mode-map [(shift down-mouse-3)] 'strokes-do-stroke)
 
