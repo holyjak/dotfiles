@@ -128,9 +128,6 @@
                      (live-add-pack-lib "nodejs-repl-eval")
                      (require 'nodejs-repl-eval)
                      (define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-eval-dwim)))
-(use-package dash
-  :ensure t
-  :init (eval-after-load "dash" '(dash-enable-font-lock)))
 
 ;; see https://github.com/ergoemacs/ergoemacs-mode/issues/333
 ;; FIXME DOES NOT WORK
