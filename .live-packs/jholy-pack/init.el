@@ -25,13 +25,16 @@
 ;;; ---
 
 ;;; JH: TODO - try - Interestig packages
-;; Try Hydra! https://github.com/abo-abo/hydra/ //Try http://www.emacswiki.org/emacs/OneKey - last updated 2012, not in Melpa :-(
-;; Try Tab Bar Mode for non-emacser friendliness
-;; rm outdated iswitchb?!
-;; better autocompletion - see ohai or Jakob's
-;; ? JS test results in Emacs
-;; Open files via projectile by default?
-;; https://github.com/Fuco1/smartparens looks nice
+;; - explore live-ido-goto-symbol, make imenu use more lines for readability
+;; - Try Hydra! https://github.com/abo-abo/hydra/ //Try http://www.emacswiki.org/emacs/OneKey - last updated 2012, not in Melpa :-(
+;; - Try Tab Bar Mode for non-emacser friendliness
+;; - rm outdated iswitchb?!
+;; - better autocompletion - see ohai or Jakob's
+;; - ? JS test results in Emacs
+;; - Open files via projectile by default?
+;; - https://github.com/Fuco1/smartparens looks nice
+;; - MMM Mode is a minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer.
+;;   https://github.com/purcell/mmm-mode
 
 ;;;; TODO Eventually
 ;; ?? https://github.com/nonsequitur/smex
