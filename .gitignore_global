@@ -1,0 +1,15 @@
+*.jpage
+
+*.iml
+.idea
+.classpath
+.project
+.settings/
+
+.DS_Store
+
+repl-port
+.vagrant
+
+node_modules/
+target/

@@ -1,3 +1,5 @@
+source ~/.config/fish/env.fish
+
 if status --is-login
 	for p in /usr/bin /usr/local/bin /opt/local/bin /usr/local/mysql/bin /opt/local/lib/postgresql83/bin ~/bin ~/.config/fish/bin 
 		if test -d $p

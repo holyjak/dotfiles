@@ -1,0 +1,49 @@
+[user]
+	name = Jakub Holy
+	email = jakub.holy@iterate.no
+[color]
+	status = auto
+	branch = auto
+	ui = auto
+[alias]
+	co = checkout
+	br = branch
+	ft = fetch
+	mt = mergetool
+	pullr = pull --rebase
+	s = status
+	w = whatchanged
+	w1 = whatchanged --oneline
+	# What changed between trees, e.g. git gd master origin/master
+	gd = log --decorate --cherry-mark --oneline --graph --boundary #$A"..."$B
+	diffs = diff --staged
+	cp = cherry-pick
+	; gui = !sh -c '/usr/local/git/libexec/git-core/git-gui' # needed by Apple Git
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[merge]
+	summary = true
+	tool = p4merge
+[github]
+	user = jakubholynet
+	token = 5e36edd08817354c8449752aaa2be139
+[core]
+	eol = lf
+	autocrlf = input
+	excludesfile = /Users/jholy/.gitignore_global
+[push]
+	default = tracking
+[mergetool]
+	keepBackup = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/MyTools/devel/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[github "gist.oauth"]
+[credential]
+	helper = osxkeychain
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true

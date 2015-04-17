@@ -1,7 +1,7 @@
 ### Fish config executed at startup (user specific)
 # :mode=shellscript:
 set JAVA_HOME /Library/Java/JavaVirtualMachines/current/Contents/Home
-set PATH ~/Library/(whoami)/bin-overrides $JAVA_HOME/bin /usr/local/bin $PATH /usr/local/share/python
+set PATH ~/Library/$USER/bin-overrides $JAVA_HOME/bin /usr/local/bin $PATH /usr/local/share/python
 
 ## Copied & modified from http://notsnippets.tumblr.com/post/894091013/fish-function-of-the-day-prompt-with-git-branch
 function fish_prompt --description 'Write out the prompt'
@@ -52,7 +52,7 @@ set -x EDITOR /usr/bin/vim
 # Disable UTF-8 as it causes troubles to machines I ssh into
 set -x LC_CTYPE 
 set -x NODE_PATH "$NODE_PATH:/usr/local/lib/node_modules"
-set -x PATH $PATH /Users/(whoami)/development/tools/mvnsh/latest/bin ~/Library/(whoami)/bin /Library/Groovy/latest/bin /usr/local/sbin /Applications/MyTools/devel/p4merge.app/Contents/MacOS
+set -x PATH $PATH /Users/$USER/development/tools/mvnsh/latest/bin ~/Library/$USER/bin /Library/Groovy/latest/bin /usr/local/sbin /Applications/MyTools/devel/p4merge.app/Contents/MacOS
 set -x PATH $PATH /usr/local/share/npm/bin
 # JAVA (Needed also for EC2 tools)
 
@@ -68,7 +68,7 @@ alias lt 'ls -lth'
 alias lh 'ls -lth | head'
 alias fnm 'find . -name '
 alias fraise 'open -a Fraise '
-alias clj "/Users/(whoami)/Library/(whoami)/bin/clj.sh"
+alias clj "/Users/$USER/Library/$USER/bin/clj.sh"
 alias clj-raw "java -cp ~/development/languages/clojure/latest/clojure.jar  clojure.main"
 alias top "top -o cpu "
 alias mci 'mvn clean install'
@@ -84,7 +84,7 @@ alias vgp 'vagrant provision'
 alias cdd 'cd ~/tmp/delme'
 
 # Git aliases
-alias gg '~/Library/(whoami)/bin/gitx'
+alias gg '~/Library/$USER/bin/gitx'
 alias gst 'git status'
 alias gbr 'git branch'
 alias gpom 'git pull --rebase origin master'
@@ -130,7 +130,6 @@ end
 
 ### AMAZON AWS AND EC2 ##################################################
 ## Config the new aws-cli written in python:
-set -x AWS_CONFIG_FILE /Users/(whoami)/.ec2/aws-cli.config
 
 ## Config the old java-based cli tools:
 set AWS_ROOT ~/.ec2
@@ -184,7 +183,7 @@ end
 ## Docker
 # (Run boot2docker shellinit to get these)
 set -x DOCKER_HOST tcp://192.168.59.103:2376
-set -x DOCKER_CERT_PATH /Users/(whoami)/.boot2docker/certs/boot2docker-vm
+set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
 set -x DOCKER_TLS_VERIFY 1
 
 # Git for dot files
