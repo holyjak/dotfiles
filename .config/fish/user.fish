@@ -50,7 +50,7 @@ end
 # For SVN etc.
 set -x EDITOR /usr/bin/vim
 # Disable UTF-8 as it causes troubles to machines I ssh into
-set -x LC_CTYPE 
+set -x LC_CTYPE
 set -x NODE_PATH "$NODE_PATH:/usr/local/lib/node_modules"
 set -x PATH $PATH /Users/$USER/development/tools/mvnsh/latest/bin ~/Library/$USER/bin /Library/Groovy/latest/bin /usr/local/sbin /Applications/MyTools/devel/p4merge.app/Contents/MacOS
 set -x PATH $PATH /usr/local/share/npm/bin
@@ -158,9 +158,6 @@ alias sshEc2Micro "ssh -i $AWS_ROOT/VaadinAS.pem ec2-user@$MICROIP"
 ### SCALA
 set -x SBT_OPTS "-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
-### JAVASCRIPT
-source ~/.config/fish/nvm-wrapper/nvm.fish
-
 ### Z-fish
 # the fish autojumper:
 . ~/.config/fish/z-fish/z.fish
@@ -185,9 +182,6 @@ end
 set -x DOCKER_HOST tcp://192.168.59.103:2376
 set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
 set -x DOCKER_TLS_VERIFY 1
-
-# Git for dot files
-alias git4dotfiles "git --git-dir ~/.git4dotfiles"
 
 # Project/client-specific setup
 #. ~/.config/fish/<project name>.fish
