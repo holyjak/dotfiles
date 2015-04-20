@@ -11,5 +11,8 @@ set -x GEM_HOME /usr/local/opt/gems
 set -x GEM_PATH /usr/local/opt/gems
 
 ### NVM
-#source ~/.config/fish/nvm-wrapper/nvm.fish
-set -x PATH $PATH ~/.nvm/v0.10.38/bin
+# Note: Sourcing nvm.fish takes > 700ms => just get path to node, npm, use nvm from bash when needed
+# Note: We need to set NVM_DIR explicitely otherwise it is guessed (wrongly) from the location of nvm.sh:
+set -x NVM_DIR ~/.nvm
+# source ~/.config/fish/nvm-wrapper/nvm.fish
+set PATH (bash -c 'source /usr/local/opt/nvm/nvm.sh && echo $NVM_BIN') $PATH
