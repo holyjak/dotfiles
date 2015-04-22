@@ -84,7 +84,7 @@ alias vgp 'vagrant provision'
 alias cdd 'cd ~/tmp/delme'
 
 # Git aliases
-alias gg '~/Library/$USER/bin/gitx'
+alias gg 'gitx'
 alias gst 'git status'
 alias gbr 'git branch'
 alias gpom 'git pull --rebase origin master'
