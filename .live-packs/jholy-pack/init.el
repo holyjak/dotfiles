@@ -93,8 +93,8 @@
 ;;(package-refresh-contents) ;; expensive !!!
 (use-package discover ;; TODO add discover-js2-refactor; check also https://github.com/steckerhalter/discover-my-major
   :ensure t)
-(use-package editorconfig
-  :ensure t)
+;(use-package editorconfig ;; fails with 	error: Required feature editorconfig was not provided
+;  :ensure t)
 (use-package fill-column-indicator
     :ensure t)
 
@@ -160,10 +160,10 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode)) ;; React.js JSX files
 
 ;; See https://github.com/puppetlabs/puppet-syntax-emacs
-(live-add-pack-lib "puppet-mode")
-(require 'puppet-mode)
+;;(live-add-pack-lib "puppet-mode") ;; TODO Fails w/ "Cannot open load file, no such file or directory, puppet-mode"
+;;(require 'puppet-mode)
 ;(autoload 'puppet-mode (concat (live-pack-lib-dir) "/puppet-mode") "Major mode for editing puppet manifests")
-(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+;;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
 ;;(live-add-pack-lib "jshint-mode")
 ;;(require 'flymake-jshint)
@@ -267,9 +267,9 @@
 ;;   (require 'nrepl-ritz))
 
 ;;; hideshow-org: (S-)TAB toggle hide/show a sexp in the hs-org/minor-mode (indicated by hs+)
-(live-add-pack-lib "hideshow-org")
-(require 'hideshow-org)
-(add-hook 'clojure-mode-hook 'hs-org/minor-mode)
+;;(live-add-pack-lib "hideshow-org")  ;; FIXME no such file or directory
+;;(require 'hideshow-org)
+;;(add-hook 'clojure-mode-hook 'hs-org/minor-mode)
 
 ;;; The SQL mode has no highlighting by default => use ANSI (replace with [postgres|ms|.. as appropriate)
 (add-hook 'sql-mode-hook 'sql-highlight-ansi-keywords)
@@ -327,13 +327,13 @@ Also moves past comment delimiters when inside comments."
   ;(nrepl-load-current-buffer) ;; FIXME if compilation fail, test will run on the old version, hiding the failure
   (clojure-test-run-tests))
 
-(defun jh/editorconfig-apply ()
-  "Apply editorcinfig properties manually (if it hasn't happend automatically)"
-    (interactive)
-    (edconf-find-file-hook)
-  (let (props)
-    (setq props (edconf-parse-properties (edconf-get-properties)))
-    (message "editorconfig loaded, indent: st %s, sz %s, \\t %s" (gethash 'indent_style props) (gethash 'indent_size props) (gethash 'tab_width props))))
+;;(defun jh/editorconfig-apply ()
+;;  "Apply editorcinfig properties manually (if it hasn't happend automatically)"
+;;    (interactive)
+;;    (edconf-find-file-hook)
+;;  (let (props)
+;;    (setq props (edconf-parse-properties (edconf-get-properties)))
+;;    (message "editorconfig loaded, indent: st %s, sz %s, \\t %s" (gethash 'indent_style props) (gethash 'indent_size props) (gethash 'tab_width props))))
 
 ;; ------------------------------------------- INFO
 ;; Code folding
