@@ -21,6 +21,10 @@ function fish_prompt --description 'Write out the prompt'
         set __git_cb (set_color brown)"["(git branch ^/dev/null | grep \* | sed 's/* //')"] "(set_color normal)
     end
 
+    if [ -n "$http_proxy" ]
+      set __proxy_warn \u26D4\u0020 # = '(-) '
+    end
+
     switch $USER
 
         case root
@@ -41,7 +45,7 @@ function fish_prompt --description 'Write out the prompt'
             set -g __fish_prompt_cwd (set_color $fish_color_cwd)
         end
 
-        printf '%s%s%s%s$ ' $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal"
+        printf '%s%s%s%s%b$ ' $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
 
     end
 end
@@ -184,4 +188,4 @@ set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
 set -x DOCKER_TLS_VERIFY 1
 
 # Project/client-specific setup
-#. ~/.config/fish/<project name>.fish
+. ~/.config/fish/netcom.fish
