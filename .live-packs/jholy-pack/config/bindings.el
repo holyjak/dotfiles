@@ -33,8 +33,8 @@
 (win-switch-set-keys '("j") 'left)
 (win-switch-set-keys '("l") 'right)
 
-(require 'clojure-test-mode)
-(define-key clojure-test-mode-map [f12] 'clj-save-and-test)
+;;(require 'clojure-test-mode) TODO Deprecated, use cider-test
+;;(define-key clojure-test-mode-map [f12] 'clj-save-and-test)
 
 ;;(require 'strokes)
 ;;(define-key strokes-mode-map [(shift down-mouse-3)] 'strokes-do-stroke)

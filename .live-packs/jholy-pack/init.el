@@ -194,12 +194,6 @@
 
 ;;; CLOJURE
 
-
-;; BEWARE 5/2013: You must jack-in from a test for this to work; otherwise:
-;; 'ClassNotFoundException: clojure.test.mode'
-;; see https://github.com/technomancy/clojure-mode/issues/146#issuecomment-15447065
-(require 'clojure-test-mode)
-
 ;; Inspect a var with C-c C-i
 ;; See http://ianeslick.com/2013/05/17/clojure-debugging-13-emacs-nrepl-and-ritz/
 ;(live-add-pack-lib "nrepl-inspect")
