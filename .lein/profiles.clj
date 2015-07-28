@@ -1,6 +1,7 @@
 
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 {:user {:dependencies [
+                         [org.clojure/tools.nrepl "0.2.7"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
 ;;                       [spyscope "0.1.5"] ;; reader macro to print forms before execution: #spy/p, d
@@ -35,6 +36,8 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
+                    [cider/cider-nrepl "0.9.1"]
+                    [refactor-nrepl "1.1.0"]
 ;;                  ;;[lein-catnip "0.5.1"]
 ;;                  ;;[codox "0.6.1"]                     ; document. generation from src
 ;;                  [lein-ring "0.9.3"]
