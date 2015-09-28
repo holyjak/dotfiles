@@ -14,3 +14,6 @@ set -x GEM_PATH /usr/local/opt/gems
 function nvm-fish
   bass source ~/.nvm/nvm.sh ';' nvm $argv
 end
+
+### VIRTUALFISH - FISH VIRTUALENV FOR PYTHON WRAPPER
+eval (python -m virtualfish) # Append plugin names if desired 

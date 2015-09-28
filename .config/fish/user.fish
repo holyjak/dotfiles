@@ -27,6 +27,10 @@ function fish_prompt --description 'Write out the prompt'
         set __git_cb (set_color brown)"["(git branch ^/dev/null | grep \* | sed 's/* //')"] "(set_color normal)
     end
 
+    if set -q VIRTUAL_ENV
+        set __virtualenv (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+    end
+
     if [ -n "$http_proxy" ]
       set __proxy_warn \u26D4\u0020 # = '(-) '
     end
@@ -51,7 +55,7 @@ function fish_prompt --description 'Write out the prompt'
             set -g __fish_prompt_cwd (set_color $fish_color_cwd)
         end
 
-        printf '%s%s%s%s%b$ ' $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
+        printf '%s%s%s%s%s%b$ ' $__virtualenv $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
 
     end
 end
