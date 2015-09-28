@@ -11,3 +11,6 @@ ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
 for F in $(ls .config/fish/ | egrep -v "user\.fish"); do 
   ln -shi ~/dotfiles/.config/fish/$F ~/.config/fish/$F
 done
+
+echo ">> Installing Bass"
+cd ${DOTFILES_DIR}/bass-bash4shell-wrapper && make install
