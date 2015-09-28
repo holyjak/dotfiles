@@ -3,6 +3,12 @@
 set JAVA_HOME /Library/Java/JavaVirtualMachines/current/Contents/Home
 set PATH ~/Library/$USER/bin-overrides $JAVA_HOME/bin /usr/local/bin $PATH /usr/local/share/python
 
+## iTerm integration
+#source .iterm2_shell_integration.fish
+#function iterm2_print_user_vars
+#  iterm2_set_user_var git_branch (git branch 2> /dev/null | grep \* | cut -c3-)
+#end
+
 ## Copied & modified from http://notsnippets.tumblr.com/post/894091013/fish-function-of-the-day-prompt-with-git-branch
 function fish_prompt --description 'Write out the prompt'
     # Update z-fish:

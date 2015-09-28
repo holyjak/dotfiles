@@ -25,6 +25,7 @@
 ;;; ---
 
 ;;; JH: TODO - try - Interestig packages
+;; - try https://github.com/abo-abo/avy instead of ace-jump since ace is too slow with Ergoemacs
 ;; - explore live-ido-goto-symbol, make imenu use more lines for readability
 ;; - Try Hydra! https://github.com/abo-abo/hydra/ //Try http://www.emacswiki.org/emacs/OneKey - last updated 2012, not in Melpa :-(
 ;; - Try Tab Bar Mode for non-emacser friendliness
@@ -98,11 +99,11 @@
 (use-package fill-column-indicator
     :ensure t)
 
-;; Enable projectile anywhere (it knows lein, pom. git, ...)
+;; Enable projectile anywhere (it knows lein, pom, git, ...)
 ;; C-c p t - switch test <> implem.
-(use-package projectile
-  :ensure t
-  :init (projectile-global-mode))
+;; (use-package projectile ;; DISABLED - broken, "cannot find required feature"
+;;   :ensure t
+;;   :init (projectile-global-mode))
 (use-package groovy-mode
   :ensure t
   :mode "\\.gradle\\'")

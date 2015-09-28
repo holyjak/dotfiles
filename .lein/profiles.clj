@@ -45,7 +45,7 @@
 ;;                  [lein-droid "0.3.5"]       	; for Android; !! req. JDK 6 as of 5/2013 !!!
 ;;                  [lein-ritz "0.7.0"]   		; for nrepl-inspect
 ;;                  [lein-marginalia "0.8.0"]
-;;                  [lein-ancient "0.6.7"]
+                    [lein-ancient "0.6.7"]
 ;;                  [lein-try "0.4.3"]
 ;;                  ;;[lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
 ;;                  [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc

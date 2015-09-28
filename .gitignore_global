@@ -6,10 +6,21 @@
 .project
 .settings/
 
-.DS_Store
+# Atom imdone plugin
+.imdone/
 
 repl-port
 .vagrant
 
 node_modules/
 target/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

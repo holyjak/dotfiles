@@ -1,6 +1,6 @@
 [user]
 	name = Jakub Holy
-	email = jakub.holy@iterate.no
+	email = jacub.holy@netcom-gsm.no
 [color]
 	status = auto
 	branch = auto
@@ -29,7 +29,7 @@
 [core]
 	eol = lf
 	autocrlf = input
-	excludesfile = /Users/jholy/.gitignore_global
+	excludesfile = /Users/holyjak/.gitignore_global
 [push]
 	default = tracking
 [mergetool]
