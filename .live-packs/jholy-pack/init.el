@@ -101,6 +101,8 @@
 
 ;; Enable projectile anywhere (it knows lein, pom, git, ...)
 ;; C-c p t - switch test <> implem.
+;; See https://emacs.stackexchange.com/questions/14290/projectile-installed-but-autoloading-failed-to-define-function-projectile-mode/17020#17020
+;; for the problem and a possible solution
 ;; (use-package projectile ;; DISABLED - broken, "cannot find required feature"
 ;;   :ensure t
 ;;   :init (projectile-global-mode))
