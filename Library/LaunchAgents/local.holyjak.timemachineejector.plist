@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+    Eject the Time Machine disk (if mounted) a way before I tend to leave work so
+    that I don't need to eject it manually when I need to run.
+ -->
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>local.holyjak.timemachineejector</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/bin/sh</string>
+            <string>-c</string>
+            <string>/usr/bin/tmutil stopbackup; /usr/sbin/diskutil unmountdisk force '/Volumes/Jakub Holy Backups'</string>
+        </array>
+        <key>StartCalendarInterval</key>
+        <dict>
+            <key>Hour</key>
+            <integer>12</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </dict>
+</plist>
