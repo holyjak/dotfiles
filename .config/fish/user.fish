@@ -93,6 +93,9 @@ alias e 'emacsclient -n '
 alias vsh 'vagrant ssh'
 alias vgs 'vagrant ssh'
 alias vgp 'vagrant provision'
+alias r 'npm run'
+alias p4merge /Applications/p4merge.app/Contents/MacOS/p4merge
+alias atom '/Applications/Atom.app/Contents/MacOS/Atom'
 
 # Movement aliases
 alias cdd 'cd ~/tmp/delme'
@@ -107,6 +110,7 @@ alias gpod 'git pull --rebase origin develop'
 alias grev 'git-push-for-review '
 alias gfo 'git fetch origin'
 #alias gsf 'git svn rebase --fetch-all '
+alias gpou 'gpo; and gpu' # Pull then push
 
 function jh_parse_git_branch
        sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
