@@ -55,7 +55,7 @@ function fish_prompt --description 'Write out the prompt'
             set -g __fish_prompt_cwd (set_color $fish_color_cwd)
         end
 
-        printf '%s%s%s%s%s%b$ ' $__virtualenv $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
+        printf '%s%s%s%s%s%b🐟  ' $__virtualenv $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
 
     end
 end
@@ -93,7 +93,7 @@ alias e 'emacsclient -n '
 alias vsh 'vagrant ssh'
 alias vgs 'vagrant ssh'
 alias vgp 'vagrant provision'
-alias r 'npm run'
+alias r 'npm --silent run'
 alias p4merge /Applications/p4merge.app/Contents/MacOS/p4merge
 alias atom '/Applications/Atom.app/Contents/MacOS/Atom'
 
@@ -144,6 +144,11 @@ function gpum
    set branch (jh_parse_git_branch)
    echo "[INFO] Pushing $branch:HEAD to master (if no conflicts) ..."
    git push origin HEAD:master
+end
+function git-push-gerrit
+  set branch (jh_parse_git_branch)
+  echo "[INFO] Pushing $branch for a Gerrit review ..."
+  git push origin HEAD:refs/for/$branch
 end
 
 ### AMAZON AWS AND EC2 ##################################################
