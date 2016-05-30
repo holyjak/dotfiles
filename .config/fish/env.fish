@@ -3,9 +3,9 @@
 set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 
 ### RBENV
-set -x RBENV_ROOT /usr/local/opt/rbenv
-set -x PATH $RBENV_ROOT/bin $PATH
-set -x PATH $RBENV_ROOT/shims $PATH
+#set -x RBENV_ROOT /usr/local/opt/rbenv
+#set -x PATH $RBENV_ROOT/bin $PATH
+#set -x PATH $RBENV_ROOT/shims $PATH
 
 set -x GEM_HOME /usr/local/opt/gems
 set -x GEM_PATH /usr/local/opt/gems

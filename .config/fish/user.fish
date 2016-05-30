@@ -1,7 +1,7 @@
 ### Fish config executed at startup (user specific)
 # :mode=shellscript:
-set JAVA_HOME /Library/Java/JavaVirtualMachines/current/Contents/Home
-set PATH ~/Library/$USER/bin-overrides $JAVA_HOME/bin /usr/local/bin $PATH /usr/local/share/python
+#set JAVA_HOME /Library/Java/JavaVirtualMachines/current/Contents/Home
+set PATH ~/Library/$USER/bin-overrides /usr/local/bin $PATH /usr/local/share/python
 
 ## iTerm integration
 #source .iterm2_shell_integration.fish
@@ -55,6 +55,7 @@ function fish_prompt --description 'Write out the prompt'
             set -g __fish_prompt_cwd (set_color $fish_color_cwd)
         end
 
+        #printf '🐟  ' 
         printf '%s%s%s%s%s%b🐟  ' $__virtualenv $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
 
     end
@@ -66,8 +67,7 @@ set -x EDITOR /usr/bin/vim
 # Disable UTF-8 as it causes troubles to machines I ssh into
 set -x LC_CTYPE
 set -x NODE_PATH "$NODE_PATH:/usr/local/lib/node_modules"
-set -x PATH $PATH /Users/$USER/development/tools/mvnsh/latest/bin ~/Library/$USER/bin /Library/Groovy/latest/bin /usr/local/sbin /Applications/MyTools/devel/p4merge.app/Contents/MacOS
-set -x PATH $PATH /usr/local/share/npm/bin
+set -x PATH $PATH ~/Library/$USER/bin 
 # JAVA (Needed also for EC2 tools)
 
 # CLOJURE
@@ -155,26 +155,11 @@ end
 ## Config the new aws-cli written in python:
 
 ## Config the old java-based cli tools:
-set AWS_ROOT ~/.ec2
 # Setup Amazon EC2 Command-Line Tools
-set EC2_HOME $AWS_ROOT
-set -x PATH $PATH $EC2_HOME/bin
-set EC2_PRIVATE_KEY (ls $EC2_HOME/pk-*.pem)
-set EC2_CERT (ls $EC2_HOME/cert-*.pem)
+#set EC2_PRIVATE_KEY (ls $EC2_HOME/pk-*.pem)
+#set EC2_CERT (ls $EC2_HOME/cert-*.pem)
 # Set region eu-west-1 as default
-set EC2_URL https://eu-west-1.ec2.amazonaws.com
-
-# Amazon RDS Tools
-set AWS_RDS_HOME $AWS_ROOT/rds
-set -x PATH $PATH $AWS_RDS_HOME/bin
-set RDS_URL https://eu-west-1.rds.amazonaws.com
-
-# Amazon CloudFormation Tools
-set AWS_CLOUDFORMATION_HOME $AWS_ROOT/cfn
-set -x PATH $PATH $AWS_CLOUDFORMATION_HOME/bin
-
-set MICROIP ec2-176-34-218-57.eu-west-1.compute.amazonaws.com
-alias sshEc2Micro "ssh -i $AWS_ROOT/VaadinAS.pem ec2-user@$MICROIP"
+#set EC2_URL https://eu-west-1.ec2.amazonaws.com
 
 ### PYTHON
 
@@ -202,9 +187,12 @@ end
 
 ## Docker
 # (Run boot2docker shellinit to get these)
-set -x DOCKER_HOST tcp://192.168.59.103:2376
-set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
-set -x DOCKER_TLS_VERIFY 1
+#set -x DOCKER_HOST tcp://192.168.59.103:2376
+#set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
+#set -x DOCKER_TLS_VERIFY 1
+function docker-env-universal --description "Set universal docker env vars required to run it"
+   eval (docker-machine env dev | sed 's/-g/-U/g')
+end
 
 # Project/client-specific setup
 . ~/.config/fish/netcom.fish
