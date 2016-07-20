@@ -139,7 +139,7 @@ end
 #set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
 #set -x DOCKER_TLS_VERIFY 1
 function docker-env-universal --description "Set universal docker env vars required to run it"
-   eval (docker-machine env dev | sed 's/-g/-U/g')
+   eval (docker-machine env default | sed 's/-g/-U/g')
 end
 
 # Project/client-specific setup
