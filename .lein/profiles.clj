@@ -36,6 +36,7 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
+                    [lein-libdir "0.1.1"] ; dependencies to ./lib/
                     [cider/cider-nrepl "0.9.1"]
                     [refactor-nrepl "1.1.0"]
 ;;                  ;;[lein-catnip "0.5.1"]

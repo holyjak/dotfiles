@@ -1,6 +1,8 @@
 #!/bin/sh
 # Symlink the dotfiles to their target places
 
+# Symlink all files in DIR matching INCLUDE_RE and not matching EXCLUDE_RE into the corresponding path under ~/
+# (non-recursive)
 function symlink {
   local RELATIVE_PATH=$1
   local INCLUDE_RE=$2
@@ -22,6 +24,7 @@ cd $DOTFILES_DIR
 symlink . "\.[^.]+" "\.config|\.git"
 
 symlink ".config/fish" ".*" "user\.fish"
+symlink ".config/fish/functions" ".*" ""
 ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
 
 symlink Library/LaunchAgents
