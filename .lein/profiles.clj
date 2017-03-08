@@ -36,9 +36,12 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
+                    [lein-virgil "0.1.0"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
                     [lein-libdir "0.1.1"] ; dependencies to ./lib/
                     [cider/cider-nrepl "0.9.1"]
                     [refactor-nrepl "1.1.0"]
+                    [com.jakemccrary/lein-test-refresh "0.16.0"] ;; autotest 
+                    ;;[venantius/ultra "0.4.1"] ;; clj.test output coloring etc
 ;;                  ;;[lein-catnip "0.5.1"]
 ;;                  ;;[codox "0.6.1"]                     ; document. generation from src
 ;;                  [lein-ring "0.9.3"]
@@ -47,7 +50,7 @@
 ;;                  [lein-ritz "0.7.0"]   		; for nrepl-inspect
 ;;                  [lein-marginalia "0.8.0"]
                     [lein-ancient "0.6.7"]
-;;                    [lein-try "1.4.3"]
+                    [lein-try "0.4.3"]
 ;;                  ;;[lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
 ;;                  [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
 ;;                  ;;[quickie "0.2.6"] ; autotest for clojure.test
