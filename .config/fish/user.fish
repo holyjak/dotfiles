@@ -51,7 +51,7 @@ alias cdd 'cd ~/tmp/delme'
 # Git aliases
 alias gg 'gitx'
 alias gst 'git status'
-alias gbr 'git branch'
+alias gbr 'git branch --sort=-committerdate'
 alias gpom 'git pull --rebase origin master'
 alias gitv 'git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 alias gpod 'git pull --rebase origin develop'
