@@ -25,6 +25,7 @@
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
         ignore = update-index --assume-unchange
         unignore = update-index --no-assume-unchanged
+        set-upstream=!git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
 
 [merge]
 	summary = true
