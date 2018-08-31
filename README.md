@@ -1,7 +1,9 @@
 dotfiles
 ========
 
-To symlink to `$HOME`, run `symlink.sh`.
+Repo with config files. To use the files, you need to symlink them to `$HOME` - run `symlink.sh` to do that.
+
+Remember to `ls -la` to see all the `.*` files here.
 
 Updating linked repos
 ---------------------
