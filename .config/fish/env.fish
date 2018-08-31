@@ -17,4 +17,8 @@ end
 nvm-fish use default
 
 ### VIRTUALFISH - FISH VIRTUALENV FOR PYTHON WRAPPER
-eval (python -m virtualfish) # Append plugin names if desired 
+eval (python2 -m virtualfish) # Append plugin names if desired 
+
+### AWS
+set -x AWS_DEFAULT_REGION eu-west-1
+set -x TF_VAR_region $AWS_DEFAULT_REGION
