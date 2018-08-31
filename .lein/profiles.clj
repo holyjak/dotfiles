@@ -1,7 +1,8 @@
 
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
+;; and a newer https://gist.github.com/rauhs/d5bb47c239b58cbf54e1d3d1de221031
 {:user {:dependencies [
-                         [org.clojure/tools.nrepl "0.2.7"]
+                         [org.clojure/tools.nrepl "0.2.13"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
 ;;                       [spyscope "0.1.5"] ;; reader macro to print forms before execution: #spy/p, d
@@ -36,12 +37,12 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
-                    [lein-virgil "0.1.0"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
+                    [lein-virgil "0.1.7"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
                     [lein-libdir "0.1.1"] ; dependencies to ./lib/
-                    [cider/cider-nrepl "0.9.1"]
-                    [refactor-nrepl "1.1.0"]
-                    [com.jakemccrary/lein-test-refresh "0.16.0"] ;; autotest 
-                    ;;[venantius/ultra "0.4.1"] ;; clj.test output coloring etc
+                    ;[cider/cider-nrepl "0.9.1"]
+                    ;[refactor-nrepl "1.1.0"]
+                    ;[com.jakemccrary/lein-test-refresh "0.16.0"] ;; autotest
+                    [venantius/ultra "0.5.2"] ;; clj.test output and data in REPL coloring etc
 ;;                  ;;[lein-catnip "0.5.1"]
 ;;                  ;;[codox "0.6.1"]                     ; document. generation from src
 ;;                  [lein-ring "0.9.3"]
@@ -49,7 +50,7 @@
 ;;                  [lein-droid "0.3.5"]       	; for Android; !! req. JDK 6 as of 5/2013 !!!
 ;;                  [lein-ritz "0.7.0"]   		; for nrepl-inspect
 ;;                  [lein-marginalia "0.8.0"]
-                    [lein-ancient "0.6.7"]
+                    [lein-ancient "0.6.15"]
                     [lein-try "0.4.3"]
 ;;                  ;;[lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
 ;;                  [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
@@ -70,5 +71,39 @@
  ;;                      ritz.nrepl.middleware.simple-complete/wrap-simple-complete
  ;;                      io.aviso.nrepl/pretty-middleware ;; pretty-print exceptions in repl
                        ]}
-       :mirrors {#"clojars" {:name "clojars mirror" :url "https://clojars-mirror.tcrawley.org/repo/"}}
- }}
+;       :mirrors {#"clojars" {:name "clojars mirror" :url "https://clojars-mirror.tcrawley.org/repo/"}}
+ }
+ :repl {:dependencies [;[zcaudate/lucid.aether "1.4.4"]
+                       ;[zcaudate/lucid.core.inject "1.4.4"]
+                       [zcaudate/lucid.core.debug "1.4.4"]
+                       [zcaudate/lucid.package "1.4.4"]
+                       ;; needed for ns reload (i.e. resetting; see clojure.tools.namespace.reload [Clojure only as of 0.3.0alpha4)
+                       [org.clojure/tools.namespace "0.3.0-alpha4"]]
+        :plugins [[com.gfredericks/lein-shorthand "0.4.1"]]
+        :global-vars {;*warn-on-reflection* true
+                      *print-length* 200 ;; avoid infinite sequences in dev mode.
+                      ;*print-namespace-maps* false
+                      *assert* true}
+        :jvm-opts [;"-Xms400m" ;; starting heap memory
+                   ;"-Xmx8000m" ;; max heap memory
+                   ; Enable clojure.spec/assert (off by default)
+                   "-Dclojure.spec.check-asserts=true"]
+        ;:injections [(require '[lucid.core.inject :as inject])
+        ;             ; Make the following functions available everywhere with the prefix `>`, i.e. >doc, >pull etc.
+        ;             (inject/in
+        ;               ;.
+        ;               [lucid.package pull]                ; add a project dependency to the REPL; ex: `(>pull [org.clojure/core.match "0.2.2"])`
+        ;               [clojure.pprint pprint]
+        ;               [clojure.repl doc source]
+        ;               )
+        ;             ]
+        ; Use the lein-shorthand to create the namespace `.` and copy there
+        ; functions we want easily available everywhere, e.g. `(./doc defn)`
+        :shorthand {. [clojure.pprint/pprint
+                       clojure.repl/doc
+                       clojure.repl/source
+                       ^:lazy lucid.package/pull ; add a project dependency to the REPL; ex: `(./pull [org.clojure/core.match "0.2.2"])`
+                       clojure.tools.namespace.repl/refresh
+                       clojure.tools.namespace.repl/refresh-all]}
+        }
+ }
