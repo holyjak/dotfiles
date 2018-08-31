@@ -15,11 +15,19 @@
             <string>/usr/bin/tmutil stopbackup; /usr/sbin/diskutil unmountdisk force '/Volumes/Jakub Holy Backups'</string>
         </array>
         <key>StartCalendarInterval</key>
+	<array>
         <dict>
             <key>Hour</key>
-            <integer>12</integer>
+            <integer>13</integer>
             <key>Minute</key>
             <integer>0</integer>
         </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>16</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        </array>
     </dict>
 </plist>
