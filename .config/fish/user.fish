@@ -20,7 +20,7 @@ set -x PATH $PATH ~/Library/$USER/bin
 
 # CLOJURE
 #set -x LEIN_JAVA_CMD /usr/local/bin/drip
-set -x LT_HOME /Applications/MyTools/editors/LightTable
+#set -x LT_HOME /Applications/MyTools/editors/LightTable
 
 ### Aliases
 # General aliases
@@ -30,8 +30,6 @@ alias lt 'ls -lth'
 alias lh 'ls -lth | head'
 alias fnm 'find . -name '
 alias fraise 'open -a Fraise '
-alias clj "/Users/$USER/Library/$USER/bin/clj.sh"
-alias clj-raw "java -cp ~/development/languages/clojure/latest/clojure.jar  clojure.main"
 alias top "top -o cpu "
 alias mci 'mvn clean install'
 alias alis 'alias'
@@ -134,13 +132,9 @@ function fish_title --description "Set window/tab title"
 end
 
 ## Docker
-# (Run boot2docker shellinit to get these)
-#set -x DOCKER_HOST tcp://192.168.59.103:2376
-#set -x DOCKER_CERT_PATH /Users/$USER/.boot2docker/certs/boot2docker-vm
-#set -x DOCKER_TLS_VERIFY 1
-function docker-env-universal --description "Set universal docker env vars required to run it"
-   eval (docker-machine env default | sed 's/-g/-U/g')
-end
+#function docker-env-universal --description "Set universal docker env vars required to run it"
+#   eval (docker-machine env default | sed 's/-g/-U/g')
+#end
 
 # Project/client-specific setup
 . ~/.config/fish/netcom.fish
