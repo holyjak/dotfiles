@@ -71,3 +71,10 @@ set CUSTOM_GEM_PATH "/var/lib/gems/1.8/bin"
 if test -d $CUSTOM_GEM_PATH
     set -x PATH $PATH "/var/lib/gems/1.8/bin"
 end
+
+# Allow dir-specific env vars (local & parent) via bash-y .envrc
+# also add support for switching node
+set -x NODE_VERSIONS ~/.nvm/versions/node
+set -x NODE_VERSION_PREFIX v # => e.g. .nvm/versions/node/v10.9.0
+
+eval (direnv hook fish)

@@ -1,3 +1,6 @@
+### General
+set -x SHELL /usr/local/bin/fish
+
 ## Note: Replaced calls to brew --prefix with actual values since
 ## it is slow (~ 200 ms) (min. b. -p. coreutils; b. -p itsel is quick)
 set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
