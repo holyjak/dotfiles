@@ -12,17 +12,18 @@ function fish_prompt --description 'Write out the prompt (JH)'
         set -g __fish_prompt_normal (set_color normal)
     end
 
-    if not set -q __git_cb
-        set __git_cb (set_color brown)"["(git branch ^/dev/null | grep \* | sed 's/* //')"] "(set_color normal)
-    end
-
     if set -q VIRTUAL_ENV
         set __virtualenv (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
     end
 
     if [ -n "$http_proxy" ]
-      set __proxy_warn \u26D4\u0020 # = '(-) '
+      set __prompt_char "\xE2\x9B\x94" # the 'no-entry' emoji in UTF-8 = 3 bytes
+    else
+      set __prompt_char "🐟"
     end
+
+    # set __pwd (prompt_pwd)  # shortened, ex.: /W/m/m/s/demo-database
+    set __pwd (basename $PWD)
 
     switch $USER
 
@@ -44,8 +45,8 @@ function fish_prompt --description 'Write out the prompt (JH)'
             set -g __fish_prompt_cwd (set_color $fish_color_cwd)
         end
 
-        #printf '🐟  '
-        printf '%s%s%s%s%s%b🐟  ' $__virtualenv $__git_cb "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" "$__proxy_warn"
+        #BEWARE: In iTerm9 - profile - Text - Uncheck "Use unicode 9 widths" to use 🐟; see https://github.com/fish-shell/fish-shell/issues/1502#issuecomment-398624519
+        printf '%s%s%s%s%s%s\u0020\u0020' $__virtualenv $__git_cb "$__fish_prompt_cwd" "$__pwd" "$__fish_prompt_normal" $__prompt_char
 
     end
 end
