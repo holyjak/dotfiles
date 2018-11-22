@@ -32,9 +32,15 @@ function fish_right_prompt -d "Write out the right prompt"
         echo -n (basename $git_root)
     end
 
+    # Print * when there are uncommited changes
+    if not git diff-index --quiet HEAD --
+        set changes_marker (set_color white)"*"(set_color normal)
+    end
+
     if not set -q __git_cb
         set_color brown
-        echo -n "["(git branch ^/dev/null | grep \* | sed 's/* //')"] "
+        # FIXME Add the * if local changes before the branch name
+        echo -n "[$changes_marker"(set_color brown)(git branch ^/dev/null | grep \* | sed 's/* //')"] "
         set_color normal
     end
 
@@ -75,13 +81,6 @@ function fish_right_prompt -d "Write out the right prompt"
     # if test (git stash list | wc -l) -gt 0
     #   echo -n "☰ "
     # end
-
-    # Print * when there are uncommited changes
-    if not git diff-index --quiet HEAD --
-        set_color white
-        echo -n "*"
-        set_color normal
-    end
   end
 
   # Print the username when the user has been changed.
