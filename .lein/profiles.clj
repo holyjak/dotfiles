@@ -37,7 +37,7 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
-                    [lein-virgil "0.1.7"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
+                    [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
                     [lein-libdir "0.1.1"] ; dependencies to ./lib/
                     ;[cider/cider-nrepl "0.9.1"]
                     ;[refactor-nrepl "1.1.0"]
@@ -75,8 +75,8 @@
  }
  :repl {:dependencies [;[zcaudate/lucid.aether "1.4.4"]
                        ;[zcaudate/lucid.core.inject "1.4.4"]
-                       [zcaudate/lucid.core.debug "1.4.4"]
-                       [zcaudate/lucid.package "1.4.4"]
+                       [zcaudate/lucid.core.debug "1.4.7"]
+                       [zcaudate/lucid.package "1.4.7"]
                        ;; needed for ns reload (i.e. resetting; see clojure.tools.namespace.reload [Clojure only as of 0.3.0alpha4)
                        [org.clojure/tools.namespace "0.3.0-alpha4"]]
         :plugins [[com.gfredericks/lein-shorthand "0.4.1"]]
