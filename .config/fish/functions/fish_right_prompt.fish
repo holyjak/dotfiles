@@ -26,10 +26,18 @@ function fish_right_prompt -d "Write out the right prompt"
   if test -n "$is_git_repository"
     git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
 
-    # Print the name of the dir containing .git
+    # Print the name of the parent "project" dir (assume it is inside git)
     set -l git_root (git rev-parse --show-toplevel)
     if [ "$PWD" != "$git_root" ]
-        echo -n (basename $git_root)
+        set -l path "$PWD"
+        set -l prj_dir "$git_root"
+        while [ "$path" != "$git_root" ]
+            if [ -e "$path/build.gradle" ]
+                set prj_dir $path
+            end
+            set path (dirname $path)
+        end
+        echo -n (basename "$prj_dir")
     end
 
     # Print * when there are uncommited changes
