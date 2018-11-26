@@ -31,6 +31,8 @@ symlink Library/LaunchAgents
 
 symlink Library/Preferences/IntelliJIdea15/
 
+symlink .clojure
+
 echo ">> Installing Bass (bash wrapper for fish to use nvm etc.)"
 cd ${DOTFILES_DIR}/bass-bash4shell-wrapper && make install
 
