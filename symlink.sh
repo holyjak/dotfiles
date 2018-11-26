@@ -24,7 +24,7 @@ cd $DOTFILES_DIR
 symlink . "\.[^.]+" "\.config|\.git"
 
 symlink ".config/fish" ".*" "user\.fish"
-symlink ".config/fish/functions" ".*" ""
+#symlink ".config/fish/functions" ".*" ""
 ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
 
 symlink Library/LaunchAgents
