@@ -30,10 +30,12 @@
 	;;     :extra-paths - vector of additional paths to add to the classpath
 	;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
 
-  ;; :aliases {
+  :aliases {
+       ;; run the nREPL server in headless mode: clj -R:nrepl -m nrepl.cmdline
+       :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.4.5"}}}
   ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.5.351"}}}
   ;;   :test {:extra-paths ["test"]}
-  ;; }
+  }
 
   ;; Provider attributes
 
