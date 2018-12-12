@@ -32,7 +32,7 @@
 
   :aliases {
        ;; run the nREPL server in headless mode: clj -R:nrepl -m nrepl.cmdline
-       :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.4.5"}}}
+       :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.5.0"}}}
   ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.5.351"}}}
   ;;   :test {:extra-paths ["test"]}
   }
