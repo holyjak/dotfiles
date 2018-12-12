@@ -96,6 +96,10 @@ function git-push-gerrit
   echo "[INFO] Pushing $branch for a Gerrit review ..."
   git push origin HEAD:refs/for/$branch
 end
+function git-push-gerrit-master
+  echo "[INFO] Pushing $branch for a Gerrit review (to master) ..."
+  git push origin HEAD:refs/for/master
+end
 
 ### AMAZON AWS AND EC2 ##################################################
 ## Config the new aws-cli written in python:
