@@ -14,14 +14,18 @@ set -x GEM_HOME /usr/local/opt/gems
 set -x GEM_PATH /usr/local/opt/gems
 
 ### NVM
+# OBS: Slowish
 function nvm-fish
   bass source ~/.nvm/nvm.sh ';' nvm $argv
 end
 nvm-fish use default
 
 ### VIRTUALFISH - FISH VIRTUALENV FOR PYTHON WRAPPER
-eval (python2 -m virtualfish) # Append plugin names if desired 
+#eval (python2 -m virtualfish) # Append plugin names if desired 
 
 ### AWS
 set -x AWS_DEFAULT_REGION eu-west-1
 set -x TF_VAR_region $AWS_DEFAULT_REGION
+
+### Rust
+set -x PATH $HOME/.cargo/bin $PATH
