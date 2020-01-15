@@ -1,8 +1,10 @@
 
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 ;; and a newer https://gist.github.com/rauhs/d5bb47c239b58cbf54e1d3d1de221031
-{:user {:dependencies [
-                         [org.clojure/tools.nrepl "0.2.13"]
+{:user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
+        :deploy-repositories [["clojars" {:url "https://repo.clojars.org" :creds :gpg}]]
+        :dependencies [
+;?                         [org.clojure/tools.nrepl "0.2.13"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
 ;;                       [spyscope "0.1.5"] ;; reader macro to print forms before execution: #spy/p, d
@@ -37,12 +39,12 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
-                    [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
-                    [lein-libdir "0.1.1"] ; dependencies to ./lib/
+ ;;                   [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
+ ;;                   [lein-libdir "0.1.1"] ; dependencies to ./lib/
                     ;[cider/cider-nrepl "0.9.1"]
                     ;[refactor-nrepl "1.1.0"]
                     ;[com.jakemccrary/lein-test-refresh "0.16.0"] ;; autotest
-                    [venantius/ultra "0.5.2"] ;; clj.test output and data in REPL coloring etc
+;?                    [venantius/ultra "0.5.2"] ;; clj.test output and data in REPL coloring etc
 ;;                  ;;[lein-catnip "0.5.1"]
 ;;                  ;;[codox "0.6.1"]                     ; document. generation from src
 ;;                  [lein-ring "0.9.3"]
@@ -79,13 +81,14 @@
                        [zcaudate/lucid.package "1.4.7"]
                        ;; needed for ns reload (i.e. resetting; see clojure.tools.namespace.reload [Clojure only as of 0.3.0alpha4)
                        [org.clojure/tools.namespace "0.3.0-alpha4"]]
-        :plugins [[com.gfredericks/lein-shorthand "0.4.1"]]
+ ;;       :plugins [[com.gfredericks/lein-shorthand "0.4.1"]]
         :global-vars {;*warn-on-reflection* true
                       *print-length* 200 ;; avoid infinite sequences in dev mode.
                       ;*print-namespace-maps* false
                       *assert* true}
         :jvm-opts [;"-Xms400m" ;; starting heap memory
                    ;"-Xmx8000m" ;; max heap memory
+                   "-XX:-OmitStackTraceInFastThrow" ;; Stop JVM from hiding stacktrace of repeated exceptions
                    ; Enable clojure.spec/assert (off by default)
                    "-Dclojure.spec.check-asserts=true"]
         ;:injections [(require '[lucid.core.inject :as inject])
