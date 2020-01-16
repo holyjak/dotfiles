@@ -72,6 +72,12 @@
                          org.openjfx/javafx-web      {:mvn/version "11.0.1"}}
             :main-opts  ["-m" "cognitect.rebl"]}
 
+            ; -Atry lib-name [lib-version] => repl with it
+            :try {:extra-deps {deps-try {:git/url "https://gitlab.com/eval/deps-try"
+                                         :sha "9ccf64be248d5d9aa641df9e94feaea913bc0687"}}
+                  :main-opts ["-m" "deps-try.main"]}
+
+
            :deps ; to get access to clojure.tools.deps.alpha.repl/add-lib
            ;; - now you can add new deps to a running REPL:
            ;; (require '[clojure.tools.deps.alpha.repl :refer [add-lib]])
