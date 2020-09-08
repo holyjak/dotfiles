@@ -1,7 +1,7 @@
 # Inspired by https://gist.github.com/britishtea/39ad478fa5180e1432a2
 function fish_right_prompt -d "Write out the right prompt"
   set -l exit_code $status
-  set -l is_git_repository (git rev-parse --is-inside-work-tree ^/dev/null)
+  set -l is_git_repository (git rev-parse --is-inside-work-tree 2>/dev/null)
 
   # Print a red dot for failed commands.
   if test $exit_code -ne 0
@@ -24,7 +24,7 @@ function fish_right_prompt -d "Write out the right prompt"
   # Red means the local branch and the upstream branch have diverted.
   # Yellow means there are more than 3 commits to push or pull.
   if test -n "$is_git_repository"
-    git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
+    git rev-parse --abbrev-ref '@{upstream}' >/dev/null 2>&1; and set -l has_upstream
 
     # Print the name of the parent "project" dir (assume it is inside git)
     set -l git_root (git rev-parse --show-toplevel)
@@ -48,15 +48,15 @@ function fish_right_prompt -d "Write out the right prompt"
     if not set -q __git_cb
         set_color brown
         # FIXME Add the * if local changes before the branch name
-        echo -n "[$changes_marker"(set_color brown)(git branch ^/dev/null | grep \* | sed 's/* //')"] "
+        echo -n "[$changes_marker"(set_color brown)(git branch 2>/dev/null | grep \* | sed 's/* //')"] "
         set_color normal
     end
 
     if set -q has_upstream
-      set -l commit_counts (git rev-list --left-right --count 'HEAD...@{upstream}' ^/dev/null)
+      set -l commit_counts (git rev-list --left-right --count 'HEAD...@{upstream}' 2>/dev/null)
 
-      set -l commits_to_push (echo $commit_counts | cut -f 1 ^/dev/null)
-      set -l commits_to_pull (echo $commit_counts | cut -f 2 ^/dev/null)
+      set -l commits_to_push (echo $commit_counts | cut -f 1 2>/dev/null)
+      set -l commits_to_pull (echo $commit_counts | cut -f 2 2>/dev/null)
 
       if test $commits_to_push != 0
         if test $commits_to_pull -ne 0
