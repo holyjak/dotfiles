@@ -92,7 +92,7 @@ set -l tabtab_compls $node_dir/lib/node_modules/serverless/node_modules/tabtab/.
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
-set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
+#set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
 
 # FZF Fuzzy finder
 # Disable the legacy key bindings and use the new ones
