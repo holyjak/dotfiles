@@ -42,6 +42,7 @@ alias vgp 'vagrant provision'
 alias r 'npm --silent run'
 alias p4merge /Applications/p4merge.app/Contents/MacOS/p4merge
 alias atom '/Applications/Atom.app/Contents/MacOS/Atom'
+alias bbr='rlwrap bb'
 
 # Movement aliases
 alias cdd 'cd ~/tmp/delme'

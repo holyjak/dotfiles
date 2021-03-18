@@ -29,3 +29,5 @@ set -x TF_VAR_region $AWS_DEFAULT_REGION
 
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
+
+set -x GRAALVM_HOME /Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.3.0/Contents/Home

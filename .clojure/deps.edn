@@ -34,13 +34,13 @@
  ;; - https://github.com/seancorfield/dot-clojure/blob/master/deps.edn
  :aliases {:srepl {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/repl}"]}
            ;; run the nREPL client in headless mode: clj -A:nrepl <port nr>
-           :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.6.0"}}
+           :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.8.0-alpha1"}}
                    :main-opts  ["-m" "nrepl.cmdline" "--connect" "--host" "127.0.0.1" "--port"]}
            :nrepl-db {:extra-deps {nrepl/nrepl {:mvn/version "0.6.0"} nrepl/drawbridge {:mvn/version "0.2.1"}}
                    :main-opts  ["-m" "nrepl.cmdline" "--connect" "--host" "127.0.0.1" "--transport" "drawbridge.client/ring-client-transport" "--port"]}
            :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}}
                    :main-opts  ["-m" "rebel-readline.main"]}
-           :new   {:extra-deps {seancorfield/clj-new {:mvn/version "0.5.5"}}
+           :new   {:extra-deps {seancorfield/clj-new {:mvn/version "0.8.6"}}
                    :main-opts  ["-m" "clj-new.create"]}
 
            ;; - see https://github.com/cognitect-labs/REBL-distro
@@ -81,6 +81,17 @@
             :graph {:deps {org.clojure/tools.deps.graph {:mvn/version "0.2.24"}}
                     :main-opts ["-m" "clojure.tools.deps.graph"]}
 
+            ;; find libs in clojars/mvn: [-s:clojars - to skip mvn] [-F:save - to save] [-l 10 - list more]
+            :find-deps {:extra-deps
+                         {find-deps
+                            {:git/url "https://github.com/hagmonk/find-deps",
+                             :sha "6fc73813aafdd2288260abb2160ce0d4cdbac8be"}},
+                       :main-opts ["-m" "find-deps.core"]}
+
+            ;; clj -Aoutdated => lists outdated versions in deps.edn; add --update to update
+            :outdated {:extra-deps {olical/depot {:mvn/version "1.8.4"}}
+                      :main-opts ["-m" "depot.outdated.main"]}
+
 
            :deps ; to get access to clojure.tools.deps.alpha.repl/add-lib
            ;; - now you can add new deps to a running REPL:
@@ -95,7 +106,25 @@
            ;; (load-master 'clojure/tools.trace)
            {:extra-deps {org.clojure/tools.deps.alpha
                          {:git/url "https://github.com/clojure/tools.deps.alpha"
-                          :sha "e160f184f051f120014244679831a9bccb37c9de"}}}}}
+                          :sha "e160f184f051f120014244679831a9bccb37c9de"}}}
+           
+           ;; package (uber)jars
+           :depstar
+           {:extra-deps {seancorfield/depstar {:mvn/version "1.0.94"}}}
+           
+           :rad-dev   {:override-deps {com.fulcrologic/fulcro-rad                 {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad"}
+                                       ;com.fulcrologic/fulcro-rad-sql             {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad-sql"}
+                                       com.fulcrologic/fulcro-rad-semantic-ui     {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad-semantic-ui"}
+                                       ;com.fulcrologic/fulcro-rad-datomic         {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad-datomic"
+                                       ;                                            :exclusions [com.datomic/datomic-free]}
+                                       }}
+           ;; Install a jar into the Maven local repo via: clj -A:deps -X:install :jar '"/path/to.jar"' [:pom, ..] (:deps is built-in)
+           ;; See https://clojure.org/reference/deps_and_cli#_local_maven_install
+           {:install
+             {:fn clojure.tools.deps.alpha.tools.install/install
+              ;; :args map could be provided but can pass on command line instead
+             }}
+           }}
 
 ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.5.351"}}}
 ;;   :test {:extra-paths ["test"]}

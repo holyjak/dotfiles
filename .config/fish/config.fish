@@ -12,7 +12,7 @@ end
 # Load custom settings for current hostname
 set HOST_SPECIFIC_FILE ~/.config/fish/(hostname).fish
 if test -f $HOST_SPECIFIC_FILE
-   . $HOST_SPECIFIC_FILE
+   source $HOST_SPECIFIC_FILE
 else 
    echo Creating host specific file: $HOST_SPECIFIC_FILE
    touch $HOST_SPECIFIC_FILE
@@ -21,7 +21,7 @@ end
 # Load custom settings for current user
 set USER_SPECIFIC_FILE ~/.config/fish/(whoami).fish
 if test -f $USER_SPECIFIC_FILE
-   . $USER_SPECIFIC_FILE
+   source $USER_SPECIFIC_FILE
 else
    echo Creating user specific file: $USER_SPECIFIC_FILE
    touch $USER_SPECIFIC_FILE
@@ -30,7 +30,7 @@ end
 # Load custom settings for current OS
 set PLATFORM_SPECIFIC_FILE ~/.config/fish/(uname -s).fish
 if test -f $PLATFORM_SPECIFIC_FILE
-   . $PLATFORM_SPECIFIC_FILE
+   source $PLATFORM_SPECIFIC_FILE
 else
    echo Creating platform specific file: $PLATFORM_SPECIFIC_FILE
    touch $PLATFORM_SPECIFIC_FILE
@@ -97,3 +97,9 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # FZF Fuzzy finder
 # Disable the legacy key bindings and use the new ones
 set -U FZF_LEGACY_KEYBINDINGS 0
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
