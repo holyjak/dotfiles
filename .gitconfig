@@ -31,9 +31,6 @@
 [merge]
 	summary = true
 	tool = p4merge
-[github]
-	user = jakubholynet
-	token = 5e36edd08817354c8449752aaa2be139
 [core]
 	eol = lf
 	autocrlf = input
