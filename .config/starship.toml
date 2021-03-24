@@ -1,0 +1,5 @@
+[aws]
+disabled = true # not interested in seeing the same region everywhere
+
+[gcloud]
+disabled = true # the same everywhere
