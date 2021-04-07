@@ -117,10 +117,6 @@ end
 ### SCALA
 set -x SBT_OPTS "-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
-### Z-fish
-# the fish autojumper:
-. ~/.config/fish/z-fish/z.fish
-
 # Override the default title
 function fish_title --description "Set window/tab title"
    set -l userPWD (echo $PWD | sed "s,$HOME,~,g")
@@ -142,4 +138,4 @@ end
 #end
 
 # Project/client-specific setup
-. ~/.config/fish/netcom.fish
+source ~/.config/fish/netcom.fish
