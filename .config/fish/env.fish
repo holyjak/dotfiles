@@ -18,7 +18,7 @@ set -x GEM_PATH /usr/local/opt/gems
 function nvm-fish
   bass source ~/.nvm/nvm.sh ';' nvm $argv
 end
-nvm-fish use default
+#nvm-fish use default # commented out b/c slow; use direnv to activate desired Node version
 
 ### VIRTUALFISH - FISH VIRTUALENV FOR PYTHON WRAPPER
 #eval (python2 -m virtualfish) # Append plugin names if desired 
@@ -31,3 +31,6 @@ set -x TF_VAR_region $AWS_DEFAULT_REGION
 set -x PATH $HOME/.cargo/bin $PATH
 
 set -x GRAALVM_HOME /Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.3.0/Contents/Home
+
+### Go
+set -x GOPATH $HOME/go
