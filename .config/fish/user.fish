@@ -138,4 +138,3 @@ end
 #end
 
 # Project/client-specific setup
-source ~/.config/fish/netcom.fish
