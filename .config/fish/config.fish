@@ -100,7 +100,7 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+#eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 # Enable starship promt; requires https://www.nerdfonts.com/ eg. Fira Code N.F.
