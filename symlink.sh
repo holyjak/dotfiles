@@ -14,18 +14,36 @@ function symlink {
   echo; echo ">> Symlinking $SRC_DIR (excluding $EXCLUDE_RE)"
   [ -d "$DST_DIR" ] || mkdir -p "$DST_DIR"
   for F in $(ls -aA $SRC_DIR | egrep "^($INCLUDE_RE)$" | egrep -v "^($EXCLUDE_RE\.|\.\.|\.DS_Store)$"); do
-    ln -shi "$SRC_DIR/$F" "$DST_DIR/$F"
+    if [ -L "$DST_DIR/$F" ]; then
+      echo "Skipping '$SRC_DIR/$F', already a link"
+    elif [ -d "$DST_DIR/$F" ]; then
+      echo "ERROR: Trying to symlink the directory '$SRC_DIR/$F' but the destination"
+      echo "       '$DST_DIR/$F' already exists and is a dir, which would create a new"
+      echo "       symlink inside this dir. Delete it or manually symlink content files."
+      exit -1 
+    else
+      echo "TMP $SRC_DIR/$F -> $DST_DIR/$F"
+      ln -shi "$SRC_DIR/$F" "$DST_DIR/$F"
+    fi
   done
 }
 
 DOTFILES_DIR=$(dirname $0)
 cd $DOTFILES_DIR
 
-symlink . "\.[^.]+" "\.config|\.git"
+symlink . "\.[^.]+" "\.config|\.git|\.lein"
+
+# .config subdirs:
+symlink ".config/clj-kondo" # "*.edn"
 
 symlink ".config/fish" ".*" "user\.fish"
 #symlink ".config/fish/functions" ".*" ""
-ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
+if [ ! -L ~/.config/fish/${USER}.fish ]; then
+  ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
+fi
+
+# Other dirs
+symlink ".lein" ".*"
 
 symlink Library/LaunchAgents
 
