@@ -5,6 +5,10 @@ set -x SHELL /usr/local/bin/fish
 ## it is slow (~ 200 ms) (min. b. -p. coreutils; b. -p itsel is quick)
 set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 
+# Use VS Code as the GUI editor, e.g. for adr-tools
+set -x VISUAL /usr/local/bin/code
+set -x GIT_EDITOR /usr//bin/vim # overwrite VISUAL for git
+
 ### RBENV
 #set -x RBENV_ROOT /usr/local/opt/rbenv
 #set -x PATH $RBENV_ROOT/bin $PATH
