@@ -1,0 +1,2 @@
+;; Source: https://github.com/clj-kondo/config/blob/master/resources/clj-kondo.exports/clj-kondo/fulcro/config.edn
+{:lint-as {com.fulcrologic.fulcro.components/defsc clojure.core/defn}}
