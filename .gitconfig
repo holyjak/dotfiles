@@ -27,6 +27,9 @@
         ignore = update-index --assume-unchange
         unignore = update-index --no-assume-unchanged
         set-upstream=!git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
+        # Remove branches deleted from the origin
+        rm-orphans = !git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' 
+                              # ... | xargs git branch -D"
 
 [merge]
 	summary = true
@@ -61,3 +64,5 @@
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[init]
+	defaultBranch = main
