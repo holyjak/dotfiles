@@ -33,8 +33,12 @@ cd $DOTFILES_DIR
 
 symlink . "\.[^.]+" "\.config|\.git|\.lein"
 
+# .config files
+symlink ".config/" ".+\..+"
+
 # .config subdirs:
-symlink ".config/clj-kondo" # "*.edn"
+#symlink ".config/clj-kondo" # "*.edn" # just make the parent dir a symlink
+symlink .config "clj-kondo"
 
 symlink ".config/fish" ".*" "user\.fish"
 #symlink ".config/fish/functions" ".*" ""

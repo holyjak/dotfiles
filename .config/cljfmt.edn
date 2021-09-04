@@ -1,0 +1,7 @@
+;; clj-fmot config for Calva etc.
+:remove-surrounding-whitespace? true
+ :remove-trailing-whitespace? true
+ :remove-consecutive-blank-lines? false
+ :insert-missing-whitespace? true
+ :align-associative? false}
+
