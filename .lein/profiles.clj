@@ -2,7 +2,9 @@
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 ;; and a newer https://gist.github.com/rauhs/d5bb47c239b58cbf54e1d3d1de221031
 ;; pragma: allowlist nextline secret
-{:user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
+{:portal {:dependencies [[djblue/portal "0.19.2"]]
+          :repl-options {:welcome (do (def p ((requiring-resolve 'portal.api/open))) (add-tap (requiring-resolve 'portal.api/submit)))}}
+ :user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
         :deploy-repositories [["clojars" {:url "https://repo.clojars.org" :creds :gpg}]]
         :dependencies [
 ;?                         [org.clojure/tools.nrepl "0.2.13"]
@@ -40,6 +42,7 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
+                  [lein-count "1.0.9"] ; -> `lein count` to count LoC
  ;;                   [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
  ;;                   [lein-libdir "0.1.1"] ; dependencies to ./lib/
                     ;[cider/cider-nrepl "0.9.1"]
@@ -76,7 +79,11 @@
                        ]}
 ;       :mirrors {#"clojars" {:name "clojars mirror" :url "https://clojars-mirror.tcrawley.org/repo/"}}
  }
- :repl {:dependencies [;[zcaudate/lucid.aether "1.4.4"]
+ :reveal {:dependencies [[vlaaad/reveal "1.3.216"]
+                         [org.openjfx/javafx-controls "17"]]
+          :repl-options {:nrepl-middleware [vlaaad.reveal.nrepl/middleware]}}
+ :repl {#_#_
+        :dependencies [;[zcaudate/lucid.aether "1.4.4"]
                        ;[zcaudate/lucid.core.inject "1.4.4"]
                        [zcaudate/lucid.core.debug "1.4.7"]
                        [zcaudate/lucid.package "1.4.7"]
