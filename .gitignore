@@ -1,4 +1,6 @@
-
 .lein/repl-history
 .lein/self-installs/
 .lein/credentials.clj.gpg
+.clj-kondo/
+.lsp/.cache/
+.portal/
