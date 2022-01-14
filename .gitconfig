@@ -30,6 +30,8 @@
         # Remove branches deleted from the origin
         rm-orphans = !git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' 
                               # ... | xargs git branch -D"
+       # Add changed files ignoring whitespace changes
+       addnw=!sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 
 [merge]
 	summary = true
@@ -38,6 +40,7 @@
 	eol = lf
 	autocrlf = input
 	excludesfile = /Users/holyjak/.gitignore_global
+	sshComand = /usr/local/bin/ssh
 [push]
 	default = tracking
 [mergetool]
