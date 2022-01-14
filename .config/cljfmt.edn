@@ -1,7 +1,24 @@
 ;; clj-fmot config for Calva etc.
-:remove-surrounding-whitespace? true
+;; see https://calva.io/formatting/#configuration
+;; and https://github.com/weavejester/cljfmt#configuration
+;; def. indent.: https://github.com/weavejester/cljfmt/blob/master/cljfmt/resources/cljfmt/indents/clojure.clj
+{:remove-surrounding-whitespace? true
  :remove-trailing-whitespace? true
  :remove-consecutive-blank-lines? false
  :insert-missing-whitespace? true
- :align-associative? false}
+ :align-associative? false
+ ;; Indentation:
+ ;; * :inner - two character indentation applied to form arguments at a depth relative to the form symbol
+ ;; * :block - first argument aligned indentation applied to form arguments at form depth 0 for a symbol
+ ; :indents {my-macro [[:inner 0]]}
+ ;:indents ^:replace {#"^\w" [[:inner 0]]}
+ :indents ^:replace {#"^\w" [[:inner 0]]}
+ ;; Demo of a bug (?): see https://github.com/weavejester/cljfmt/issues/241
+ :DEMO241 (do (ns x
+                (:require
+                 [...])) ; below r
+            (defn X
+            ;; comment
+              ([args]
+                (doit))))} ; if no docstring ok here, below [ - but not w/ docstring or a comment line
 
