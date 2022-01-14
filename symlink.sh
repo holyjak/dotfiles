@@ -13,7 +13,7 @@ function symlink {
   local DST_DIR=~/$RELATIVE_PATH
   echo; echo ">> Symlinking $SRC_DIR (excluding $EXCLUDE_RE)"
   [ -d "$DST_DIR" ] || mkdir -p "$DST_DIR"
-  for F in $(ls -aA $SRC_DIR | egrep "^($INCLUDE_RE)$" | egrep -v "^($EXCLUDE_RE\.|\.\.|\.DS_Store)$"); do
+  for F in $(ls -aA "$SRC_DIR" | egrep "^($INCLUDE_RE)$" | egrep -v "^($EXCLUDE_RE\.|\.\.|\.DS_Store)$"); do
     if [ -L "$DST_DIR/$F" ]; then
       echo "Skipping '$SRC_DIR/$F', already a link"
     elif [ -d "$DST_DIR/$F" ]; then
@@ -52,6 +52,8 @@ symlink ".lein" ".*"
 symlink Library/LaunchAgents
 
 symlink Library/Preferences/IntelliJIdea15/
+
+symlink 'Library/Application Support/Code/User' "settings\.json"
 
 echo ">> Installing Bass (bash wrapper for fish to use nvm etc.)"
 cd ${DOTFILES_DIR}/bass-bash4shell-wrapper && make install

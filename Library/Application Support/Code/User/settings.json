@@ -1,0 +1,125 @@
+{
+    // Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+        "**/.DS_Store": true,
+        "**/build": true
+	},
+	"workbench.colorTheme": "Visual Studio Light",
+	"calva.paredit.defaultKeyMap": "strict",
+	"git.ignoreMissingGitWarning": true,
+	"search.exclude": {
+		"**/.terraform": true
+	},
+	"remote.SSH.showLoginTerminal": true,
+	"editor.defaultFormatter": "EditorConfig.EditorConfig",
+	"liveshare.authenticationProvider": "GitHub",
+	"calva.prettyPrintingOptions": {
+		"enabled": false,
+		"printEngine": "pprint",
+		"width": 120,
+		"maxLength": 50
+	},
+	"workbench.editorAssociations": {
+		"*.ipynb": "jupyter.notebook.ipynb"
+	},
+	"go.toolsManagement.autoUpdate": true,
+	"dart.flutterSdkPath": "/Users/holyjak/tmp/delme/flutter",
+	"files.associations": {
+		"*.bb": "clojure"
+	},
+	"cSpell.userWords": [
+		"adoc",
+		"Calva",
+		"defmutation",
+		"defresolver",
+		"defsc",
+		"denormalized",
+		"Fulcro",
+		"idents",
+		"pathom",
+		"prepend"
+	],
+	"[asciidoc]": {
+	
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": false
+	},
+	"asciidoc.preview.attributes": {
+	
+	},
+	"redhat.telemetry.enabled": true,
+	"window.zoomLevel": 2,
+	"yaml.schemas": {},
+	"yaml.customTags": [
+		"!And",
+		"!And sequence",
+		"!If",
+		"!If sequence",
+		"!Not",
+		"!Not sequence",
+		"!Equals",
+		"!Equals sequence",
+		"!Or",
+		"!Or sequence",
+		"!FindInMap",
+		"!FindInMap sequence",
+		"!Base64",
+		"!Join",
+		"!Join sequence",
+		"!Cidr",
+		"!Ref",
+		"!Sub",
+		"!Sub sequence",
+		"!GetAtt",
+		"!GetAZs",
+		"!ImportValue",
+		"!ImportValue sequence",
+		"!Select",
+		"!Select sequence",
+		"!Split",
+		"!Split sequence"
+	],
+	"calva.customREPLCommandSnippets": [
+        {
+            "name": "Add libs",
+            "snippet": "((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs) '{$selection})"
+        },
+        {
+            "name": "Start Portal",
+            "key": "p",
+            "snippet": "(do (ns dev) (def portal ((requiring-resolve 'portal.api/open) {:launcher :vs-code, :portal.launcher/window-title (System/getProperty \"user.dir\")})) (try (let [r! (requiring-resolve 'portal.runtime/register!) html (fn [url] (with-meta [:div {:style {:background :white}} [:portal.viewer/html (slurp url)]] {:portal.viewer/default :portal.viewer/hiccup}))] (run! (fn [[k f]] (r! f {:name k})) {'dev/->file (requiring-resolve 'clojure.java.io/file) 'dev/->html html 'dev/->map (partial into {}) 'dev/->set (partial into #{}) 'dev/->vector (partial into [])})) (catch Throwable _)) (add-tap (requiring-resolve 'portal.api/submit)))"
+        }
+    ],
+	"calva.fmt.configPath": "/Users/holyjak/.config/cljfmt.edn",
+	"[dart]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.rulers": [
+			80
+		],
+		"editor.selectionHighlight": false,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": false
+	},
+	"editor.accessibilitySupport": "off",
+	"editor.rulers": [80],
+	"editor.minimap.enabled": false,
+	"[clojure]": {
+		"editor.defaultFormatter": "betterthantomorrow.calva"
+	},
+	"json.schemas": [],
+	"calva.fmt.formatForward": true,
+	"calva.fmt.inferParensAsYouType": true,
+	"editor.guides.bracketPairs": "active",
+	"screencastMode.onlyKeyboardShortcuts": true,
+	"calva.showCalvaSaysOnStart": false,
+	"plantuml.render": "PlantUMLServer",
+	"plantuml.server": "http://localhost:9898",
+	"diffEditor.ignoreTrimWhitespace": false,
+}

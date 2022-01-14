@@ -2,4 +2,3 @@
 .lein/repl-history
 .lein/self-installs/
 .lein/credentials.clj.gpg
-Library/Application Support/
