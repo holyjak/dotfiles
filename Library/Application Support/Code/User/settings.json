@@ -83,6 +83,9 @@
 		"!Split",
 		"!Split sequence"
 	],
+	"calva.myCljAliases": [
+		":inspect/portal-cli"
+	],
 	"calva.customREPLCommandSnippets": [
         {
             "name": "Add libs",
