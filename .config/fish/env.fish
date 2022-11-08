@@ -18,12 +18,6 @@ set -x GEM_HOME /usr/local/opt/gems
 set -x GEM_PATH /usr/local/opt/gems
 
 ### NVM
-# OBS: Slowish
-function nvm-fish
-  bass source ~/.nvm/nvm.sh ';' nvm $argv
-end
-#nvm-fish use default # commented out b/c slow; use direnv to activate desired Node version
-
 ### VIRTUALFISH - FISH VIRTUALENV FOR PYTHON WRAPPER
 #eval (python2 -m virtualfish) # Append plugin names if desired 
 

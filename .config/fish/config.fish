@@ -82,13 +82,12 @@ eval (direnv hook fish)
 # Tabtab - A node package to do some custom command line <tab><tab> completion for any system command, for Bash, Zsh, and Fish shells.
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-# nvm-fish which current
-set -l node_dir (dirname (nvm-fish which current))/..
-set -l tabtab_compls $node_dir/lib/node_modules/serverless/node_modules/tabtab/.completions
-[ -f $tabtab_compls/serverless.fish ]; and . $tabtab_compls/serverless.fish
+#set -l node_dir (dirname (nvm-fish which current))/..
+#set -l tabtab_compls $node_dir/lib/node_modules/serverless/node_modules/tabtab/.completions
+#[ -f $tabtab_compls/serverless.fish ]; and . $tabtab_compls/serverless.fish
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f $tabtab_compls/sls.fish ]; and . $tabtab_compls/sls.fish
+#[ -f $tabtab_compls/sls.fish ]; and . $tabtab_compls/sls.fish
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 

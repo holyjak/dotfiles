@@ -28,7 +28,6 @@ alias ll 'ls -lh'
 alias la 'ls -lha'
 alias lt 'ls -lth'
 alias lh 'ls -lth | head'
-alias fnm 'find . -name '
 alias fraise 'open -a Fraise '
 alias top "top -o cpu "
 alias mci 'mvn clean install'
