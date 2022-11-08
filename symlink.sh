@@ -39,6 +39,8 @@ symlink ".config/" ".+\..+"
 # .config subdirs:
 #symlink ".config/clj-kondo" # "*.edn" # just make the parent dir a symlink
 symlink .config "clj-kondo"
+symlink ".config/joyride/scripts" ".*" "" # VS Code scripting plugin
+symlink .config "git"
 
 symlink ".config/fish" ".*" "user\.fish"
 #symlink ".config/fish/functions" ".*" ""
@@ -55,6 +57,7 @@ symlink Library/Preferences/IntelliJIdea15/
 
 symlink 'Library/Application Support/Code/User' "settings\.json"
 
-echo ">> Installing Bass (bash wrapper for fish to use nvm etc.)"
-cd ${DOTFILES_DIR}/bass-bash4shell-wrapper && make install
+# Disabled b/c Bass uses deprecated Python 2
+#echo ">> Installing Bass (bash wrapper for fish to use nvm etc.)"
+#cd ${DOTFILES_DIR}/bass-bash4shell-wrapper && make install
 

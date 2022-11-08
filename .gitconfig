@@ -1,6 +1,7 @@
 [user]
 	name = Jakub Holy
 	email = jakubholy@jakubholy.net
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICQBsQMijqC45O4MyNbwZ7SHXR9whOy6AAdH+Z4Pz1YB
 [color]
 	status = auto
 	branch = auto
@@ -32,6 +33,7 @@
                               # ... | xargs git branch -D"
        # Add changed files ignoring whitespace changes
        addnw=!sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+	done = "!f() { git branch -d @{-1}; }; f"
 
 [merge]
 	summary = true
@@ -43,8 +45,16 @@
 	sshComand = /usr/local/bin/ssh
 [push]
 	default = tracking
+	autoSetupRemote = true
 [mergetool]
 	keepBackup = false
+[diff]
+        tool = difftastic
+[difftool]
+        prompt = false
+[difftool "difftastic"]
+        # see https://difftastic.wilfred.me.uk/git.html
+        cmd = difft "$LOCAL" "$REMOTE"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -54,12 +64,25 @@
 [github "gist.oauth"]
 [credential]
 	helper = osxkeychain
+	#helper = osxkeychain
 [branch]
 	autosetuprebase = always
 [pull]
 	rebase = true
 [mergetool "p4merge"]
 	path = /Applications/p4merge.app/Contents/MacOS/p4merge
+[init]
+	defaultBranch = main
+[rerere]
+	enabled = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/holyjak/.config/git/allowed_ssh_signers
+	#program = /Users/holyjak/tmp/delme/fake-sign.bb
+[commit]
+	gpgsign = true
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = [A-Z0-9]{20}
@@ -67,5 +90,3 @@
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-[init]
-	defaultBranch = main
