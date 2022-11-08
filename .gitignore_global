@@ -19,6 +19,12 @@ repl-port
 node_modules/
 target/
 
+# Clojure & Co.
+.cpcache
+.shadow-cljs
+.lsp
+.clj-kondo/.cache/
+
 # OS generated files #
 ######################
 .DS_Store
