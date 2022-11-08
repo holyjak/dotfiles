@@ -9,6 +9,10 @@ set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 set -x VISUAL /usr/local/bin/code
 set -x GIT_EDITOR /usr//bin/vim # overwrite VISUAL for git
 
+### JAVA
+set -x JAVA_17_HOME (/usr/libexec/java_home -v 17)
+set -x JAVA_11_HOME (/usr/libexec/java_home -v 11)
+
 ### RBENV
 #set -x RBENV_ROOT /usr/local/opt/rbenv
 #set -x PATH $RBENV_ROOT/bin $PATH
@@ -24,6 +28,8 @@ set -x GEM_PATH /usr/local/opt/gems
 ### AWS
 set -x AWS_DEFAULT_REGION eu-west-1
 set -x TF_VAR_region $AWS_DEFAULT_REGION
+# aws-vault config - use ykman for OTP codes, see https://github.com/99designs/aws-vault/blob/master/USAGE.md#using-a-yubikey
+set -x AWS_VAULT_PROMPT ykman
 
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
