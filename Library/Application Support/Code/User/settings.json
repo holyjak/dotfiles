@@ -12,7 +12,6 @@
 		"**/.settings": true,
 		"**/.factorypath": true
 	},
-	"workbench.colorTheme": "Visual Studio Light",
 	"calva.paredit.defaultKeyMap": "strict",
 	"git.ignoreMissingGitWarning": true,
 	"search.exclude": {
@@ -22,8 +21,8 @@
 	"editor.defaultFormatter": "EditorConfig.EditorConfig",
 	"liveshare.authenticationProvider": "GitHub",
 	"calva.prettyPrintingOptions": {
-		"enabled": false,
 		"printEngine": "pprint",
+		"enabled": true,
 		"width": 120,
 		"maxLength": 50
 	},
@@ -43,6 +42,7 @@
 		"defsc",
 		"denormalized",
 		"Fulcro",
+		"holyjak",
 		"idents",
 		"pathom",
 		"prepend"
@@ -60,7 +60,7 @@
 	
 	},
 	"redhat.telemetry.enabled": true,
-	"window.zoomLevel": 1,
+	"window.zoomLevel": 3,
 	"yaml.schemas": {},
 	"yaml.customTags": [
 		"!And",
@@ -154,4 +154,7 @@
 	"calva.myLeinProfiles": [
 		":portal"
 	],
+	"calva.useTestExplorer": true,
+	"workbench.editor.untitled.hint": "hidden",
+	"editor.stickyScroll.enabled": true,
 }
