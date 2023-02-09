@@ -105,3 +105,5 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 # Enable starship promt; requires https://www.nerdfonts.com/ eg. Fira Code N.F.
 starship init fish | source
 
+
+source /Users/holyjak/.docker/init-fish.sh || true # Added by Docker Desktop
