@@ -44,6 +44,7 @@
 ;;                     (require 'spyscope.core)
                      ]
         :plugins [
+                  [lein-cljfmt "0.9.0"]
                   [lein-count "1.0.9"] ; -> `lein count` to count LoC
  ;;                   [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
  ;;                   [lein-libdir "0.1.1"] ; dependencies to ./lib/
