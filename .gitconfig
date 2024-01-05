@@ -56,6 +56,7 @@
 [mergetool]
 	keepBackup = false
 [diff]
+    #external = difft # use difftastic by default for `git diff`
     tool = difftastic
     colorMoved = default
 [difftool]
