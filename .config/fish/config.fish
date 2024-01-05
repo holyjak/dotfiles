@@ -107,3 +107,7 @@ starship init fish | source
 
 
 source /Users/holyjak/.docker/init-fish.sh || true # Added by Docker Desktop
+
+if test -f ./ardoq.fish
+  source ./ardoq.fish
+end

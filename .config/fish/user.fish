@@ -32,7 +32,6 @@ alias fraise 'open -a Fraise '
 alias top "top -o cpu "
 alias mci 'mvn clean install'
 alias alis 'alias'
-alias g 'grep'
 alias xx 'exit'
 alias e 'emacsclient -n '
 alias vsh 'vagrant ssh'
@@ -42,6 +41,7 @@ alias r 'npm --silent run'
 alias p4merge /Applications/p4merge.app/Contents/MacOS/p4merge
 alias atom '/Applications/Atom.app/Contents/MacOS/Atom'
 alias bbr='rlwrap bb'
+alias gsw='git switch'
 
 # Movement aliases
 alias cdd 'cd ~/tmp/delme'
@@ -50,12 +50,11 @@ alias cdd 'cd ~/tmp/delme'
 alias gg 'gitx'
 alias gst 'git status'
 alias gbr 'git branch --sort=-committerdate'
-alias gpom 'git pull --rebase origin master'
+alias gbrh 'git branch --sort=-committerdate | head'
 alias gitv 'git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 alias gpod 'git pull --rebase origin develop'
 alias grev 'git-push-for-review '
 alias gfo 'git fetch origin'
-#alias gsf 'git svn rebase --fetch-all '
 alias gpou 'gpo; and gpu' # Pull then push
 
 function jh_parse_git_branch
@@ -67,7 +66,11 @@ function gpo
   git pull --rebase origin $branch
 end
 function gpom
-  set branch 'master'
+  if git show-ref --verify --quiet refs/heads/master;
+    set branch 'master'
+  else
+    set branch 'main'
+  end
   echo "[INFO] Pull rebase from $branch ..."
   git pull --rebase origin $branch
 end

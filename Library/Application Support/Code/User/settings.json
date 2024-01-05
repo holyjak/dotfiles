@@ -15,7 +15,8 @@
 	"calva.paredit.defaultKeyMap": "strict",
 	"git.ignoreMissingGitWarning": true,
 	"search.exclude": {
-		"**/.terraform": true
+		"**/.terraform": true,
+		"**/dist": true
 	},
 	"remote.SSH.showLoginTerminal": true,
 	"editor.defaultFormatter": "EditorConfig.EditorConfig",
@@ -36,16 +37,22 @@
 	},
 	"cSpell.userWords": [
 		"adoc",
+		"Asciidoctor",
 		"Calva",
 		"defmutation",
 		"defresolver",
 		"defsc",
 		"denormalized",
 		"Fulcro",
+		"fulcrologic",
 		"holyjak",
 		"idents",
+		"Michiel",
 		"pathom",
-		"prepend"
+		"plantuml",
+		"prepend",
+		"startuml",
+		"Sussman"
 	],
 	"[asciidoc]": {
 	
@@ -157,4 +164,19 @@
 	"calva.useTestExplorer": true,
 	"workbench.editor.untitled.hint": "hidden",
 	"editor.stickyScroll.enabled": true,
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"workbench.colorTheme": "Default Light Modern",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"security.workspace.trust.untrustedFiles": "open",
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"githubPullRequests.pullBranch": "never",
 }

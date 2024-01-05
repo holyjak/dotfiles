@@ -2,13 +2,15 @@
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 ;; and a newer https://gist.github.com/rauhs/d5bb47c239b58cbf54e1d3d1de221031
 ;; pragma: allowlist nextline secret
-{:portal {:dependencies [[djblue/portal "RELEASE"]]
+{:nrepl {:dependencies [[nrepl/nrepl "RELEASE"]]}
+ :portal {:dependencies [[djblue/portal "RELEASE"]]
           :repl-options {:welcome (do (def p ((requiring-resolve 'portal.api/open) {:launcher :intellij})) (add-tap (requiring-resolve 'portal.api/submit)))}}
  ;; NOTE: Flow 2.2 needs tools.namespace 1.2
  :flowstorm {:dependencies [[com.github.jpmonettas/flow-storm-dbg "RELEASE"], [com.github.jpmonettas/flow-storm-inst "RELEASE"]]}
  :user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
         :deploy-repositories [["clojars" {:url "https://repo.clojars.org" :creds :gpg}]]
         :dependencies [
+                       [org.clojars.abhinav/snitch "0.1.14"] ; arg-capturing utils like let*, defn*
 ;?                         [org.clojure/tools.nrepl "0.2.13"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
@@ -26,7 +28,7 @@
 ;;                       [org.clojure/tools.trace "0.7.8"] ;; trace calls to fns (in+out), forms execution, ...
                        ]
 
-        :injections [
+        :injections [(require 'snitch.core) ; intern let* etc in clojure.core 
 ;;                     (require 'vinyasa.inject) ;; TODO check also vinyasa/pull, lein, reimport
 ;;                     (require 'alex-and-georges.debug-repl)
 ;;                     (require 'com.georgejahad.difform)

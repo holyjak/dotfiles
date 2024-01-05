@@ -38,3 +38,8 @@ set -x GRAALVM_HOME /Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.3.0/C
 
 ### Go
 set -x GOPATH $HOME/go
+
+### Other
+# Override the osx-provided ssh-agent socket pointing to its, old one; see
+# ~/Library/LaunchAgents/com.openssh.ssh-agent-brew.plist for where the socket comes from
+set -x SSH_AUTH_SOCK ~/.ssh/agent.sock
