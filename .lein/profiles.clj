@@ -10,7 +10,7 @@
  :user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
         :deploy-repositories [["clojars" {:url "https://repo.clojars.org" :creds :gpg}]]
         :dependencies [
-                       [org.clojars.abhinav/snitch "0.1.14"] ; arg-capturing utils like let*, defn*
+                       [org.clojars.abhinav/snitch "RELEASE"] ; arg-capturing utils like let*, defn*
 ;?                         [org.clojure/tools.nrepl "0.2.13"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
