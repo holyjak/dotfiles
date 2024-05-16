@@ -10,10 +10,10 @@ Updating linked repos
 
 Some config comes from other Git repos, included via git subtree, e.g.:
 
-    git remote add -f emacs-live git@github.com:overtone/emacs-live.git
-    git subtree add --prefix .emacs.d emacs-live master --squash
+    git remote add -f clojure-deps-edn git@github.com:holyjak/clojure-deps-edn.git
+    git subtree add --prefix .clojure clojure-deps-edn live --squash
 
 To update those you run the same command with `pull` instead of `add`:
 
-    git fetch emacs-live master
-    git subtree pull --prefix .emacs.d emacs-live master --squash
+    git fetch clojure-deps-edn live
+    git subtree pull --prefix .clojure clojure-deps-edn live --squash
