@@ -2,7 +2,8 @@
 ;; Inspired heavily by http://dev.solita.fi/2014/03/18/pimp-my-repl.html
 ;; and a newer https://gist.github.com/rauhs/d5bb47c239b58cbf54e1d3d1de221031
 ;; pragma: allowlist nextline secret
-{:nrepl {:dependencies [[nrepl/nrepl "RELEASE"]]}
+{:ardoq-repl {:source-paths ["repl"]}
+ :nrepl {:dependencies [[nrepl/nrepl "RELEASE"]]}
  :portal {:dependencies [[djblue/portal "RELEASE"]]
           :repl-options {:welcome (do (def p ((requiring-resolve 'portal.api/open) {:launcher :intellij})) (add-tap (requiring-resolve 'portal.api/submit)))}}
  ;; NOTE: Flow 2.2 needs tools.namespace 1.2
