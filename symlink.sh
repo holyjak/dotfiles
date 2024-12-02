@@ -3,7 +3,7 @@
 
 # Symlink all files in DIR matching INCLUDE_RE and not matching EXCLUDE_RE into the corresponding path under ~/
 # (non-recursive)
-function symlink {
+function symlink { # SRC_DIR_RELATIVE INCLUDE_RE EXCLUDE_RE
   local RELATIVE_PATH=$1
   local INCLUDE_RE=$2
   [ -z "$INCLUDE_RE" ] && INCLUDE_RE=".*"
@@ -30,6 +30,10 @@ function symlink {
 
 DOTFILES_DIR=$(dirname $0)
 cd $DOTFILES_DIR
+
+if [ ! -L "$DOTFILES_DIR/.git/hooks/pre-commit" ]; then
+    ln -shi "$DOTFILES_DIR/local-git-hooks/pre-commit" "$DOTFILES_DIR/.git/hooks/pre-commit"
+fi
 
 symlink . "\.[^.]+" "\.config|\.git|\.lein"
 # Note: this includes .clojure, added via `git submodule add git@github.com:holyjak/clojure-deps-edn.git .clojure`

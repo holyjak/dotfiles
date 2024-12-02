@@ -32,3 +32,9 @@ To update those you run the same command with `pull` instead of `add`:
 Same as pulling, but with push:
 
     git subtree push --prefix .clojure clojure-deps-edn live
+
+Quality assurance
+-----------------
+
+There is a pre-commit hook, which ensures we do not mess up some things - see
+`local-git-hooks/pre-commit`.
