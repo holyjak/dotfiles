@@ -71,10 +71,10 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    z
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+    git                      # common git aliases, such as `gst` for `git status`
+    z                        # jump to recent directory by partial match
+    zsh-autosuggestions      # fish-like inline autocompletion
+    zsh-syntax-highlighting  # for the command line
     # TODO: Explore https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
     )
 
