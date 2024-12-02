@@ -4,6 +4,7 @@
 ;; pragma: allowlist nextline secret
 {:ardoq-repl {:source-paths ["repl"]}
  :nrepl {:dependencies [[nrepl/nrepl "RELEASE"]]}
+ :dev {:dependencies [[nrepl/nrepl "RELEASE"]]}
  :portal {:dependencies [[djblue/portal "RELEASE"]]
           :repl-options {:welcome (do (def p ((requiring-resolve 'portal.api/open) {:launcher :intellij})) (add-tap (requiring-resolve 'portal.api/submit)))}}
  ;; NOTE: Flow 2.2 needs tools.namespace 1.2
@@ -88,7 +89,8 @@
  :reveal {:dependencies [[vlaaad/reveal "1.3.216"]
                          [org.openjfx/javafx-controls "17"]]
           :repl-options {:nrepl-middleware [vlaaad.reveal.nrepl/middleware]}}
- :repl {#_#_
+ :repl {:dependencies [[nrepl/nrepl "RELEASE"]]
+        #_#_
         :dependencies [;[zcaudate/lucid.aether "1.4.4"]
                        ;[zcaudate/lucid.core.inject "1.4.4"]
                        [zcaudate/lucid.core.debug "1.4.7"]

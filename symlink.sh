@@ -31,7 +31,8 @@ function symlink {
 DOTFILES_DIR=$(dirname $0)
 cd $DOTFILES_DIR
 
-symlink . "\.[^.]+" "\.config|\.git|\.lein\.clojure"
+symlink . "\.[^.]+" "\.config|\.git|\.lein"
+# Note: this includes .clojure, added via `git submodule add git@github.com:holyjak/clojure-deps-edn.git .clojure`
 
 # .config files
 symlink ".config/" ".+\..+"
@@ -48,8 +49,7 @@ if [ ! -L ~/.config/fish/${USER}.fish ]; then
   ln -s -i ~/dotfiles/.config/fish/user.fish ~/.config/fish/${USER}.fish
 fi
 
-# Other dirs
-symlink ".clojure" ".*"
+# Other dirs #
 symlink ".lein" ".*"
 
 symlink Library/LaunchAgents

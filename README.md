@@ -8,7 +8,7 @@ Remember to `ls -la` to see all the `.*` files here.
 Updating linked repos
 ---------------------
 
-Some config comes from other Git repos, included via git subtree, e.g.:
+Some config comes from other Git repos, included via `git subtree`, e.g.:
 
     git remote add -f clojure-deps-edn git@github.com:holyjak/clojure-deps-edn.git
     git subtree add --prefix .clojure clojure-deps-edn live --squash

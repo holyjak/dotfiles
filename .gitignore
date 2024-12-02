@@ -4,3 +4,4 @@
 .clj-kondo/
 .lsp/.cache/
 .portal/
+**/.calva/repl.calva-repl

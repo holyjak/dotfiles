@@ -18,6 +18,12 @@
 	# What changed between trees, e.g. git gd master origin/master
 	gd = log --decorate --cherry-mark --oneline --graph --boundary #$A"..."$B
 	diffs = diff --staged
+	# `git log` with patches shown with difftastic.
+    dl = -c diff.external=difft log -p --ext-diff
+    # Show the most recent commit with difftastic.
+    ds = -c diff.external=difft show --ext-diff
+    # `git diff` with difftastic.
+    dft = -c diff.external=difft diff
 	cp = cherry-pick
 	; gui = !sh -c '/usr/local/git/libexec/git-core/git-gui' # needed by Apple Git
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
