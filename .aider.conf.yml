@@ -1,0 +1,6 @@
+# Config for aider.chat coding agent:
+openai-api-base: https://api.githubcopilot.com
+# openai-api-key:  # from env. var OPENAI_API_KEY, see .zshenv.encrypted
+model: openai/gpt-4.1
+weak-model:      openai/gpt-4o-mini
+show-model-warnings: false

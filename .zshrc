@@ -1,3 +1,6 @@
+## Config for *interactive* usage
+eval $(dotenvx get --format eval -f ~/.zshenv.encrypted)
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$PATH:~/Library/holyjak/bin
@@ -109,3 +112,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# pnpm
+export PNPM_HOME="/Users/holyjak/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -1,0 +1,8 @@
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY_ENCRYPTED="035945ae4eb3f8e113bef3cd959b8570e8b6e6dd35474227f959c40c0e103830cc"
+
+# .zshenv.encrypted
+OPENAI_API_KEY="encrypted:BJlCTWZGNR+0yG6zgUIsd87tbQqO0Inj9Vuv2fUhx/5FmQTwHskEPDZ7oFQX61kDUECVKDZ95V571u765Yg6zK1oklGwsr2PO4bg1SyVcXoMNyJL6OiUDIMPD0Pawae18iqOzC3Yb2TM1R27KDRApdYZhnZHcLx2o6HMlKUHN0IZaFVxoTYBbpM="
