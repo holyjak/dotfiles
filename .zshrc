@@ -3,7 +3,9 @@ eval $(dotenvx get --format eval -f ~/.zshenv.encrypted)
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH=$PATH:~/Library/holyjak/bin
+export PATH=/opt/homebrew/bin/:$PATH:~/Library/holyjak/bin:~/.local/bin
+# Notes:
+# - .local/bin - babashka's bbin installs into here
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -120,3 +122,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Suggested by git-extras brew formula
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
