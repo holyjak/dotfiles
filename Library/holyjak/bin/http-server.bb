@@ -1,5 +1,5 @@
 #!/usr/bin/env bb
-(require 
+(require
   '[babashka.deps :as deps]
   '[clojure.tools.cli :refer [parse-opts]])
 

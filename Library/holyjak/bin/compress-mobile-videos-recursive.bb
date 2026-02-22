@@ -18,15 +18,15 @@
         temp-path (str path-no-ext ".temp.mp4")]
     (println "Processing:" path-str)
     
-    (let [{:keys [exit err]} 
+    (let [{:keys [exit err]}
           (sh "ffmpeg" "-y" "-i" path-str
               "-vf" "scale=iw*min(800/iw\\,600/ih):ih*min(800/iw\\,600/ih),pad=800:600:(800-iw*min(800/iw\\,600/ih))/2:(600-ih*min(800/iw\\,600/ih))/2"
-            ;; Scaling: Mobile phones often record in 16:9 or 9:16. This specific string scales the video to fit 
+            ;; Scaling: Mobile phones often record in 16:9 or 9:16. This specific string scales the video to fit
             ;; within 800x600 while maintaining the original aspect ratio (no stretching). Adds black bars if smaller.
               "-c:v" "libx265" ; use the modern HEVC (H.265) codec
               "-crf" "28" ; quality: the lower the better & bigger, 28 sweet spot for mobiles
               "-tag:v" "hvc1" ; hint for QuickTime and Apple Photos
-              "-c:a" "mp3" 
+              "-c:a" "mp3"
               temp-path)]
       
       (if (zero? exit)
@@ -34,7 +34,7 @@
           (fs/move temp-path file-path {:replace-existing true})
           (println "Done:" path-str))
         (do
-          (println "Error processing" path-str ":" err) 
+          (println "Error processing" path-str ":" err)
           (when (fs/exists? temp-path) (fs/delete temp-path))
           (throw (Exception. (str "Error processing" path-str ":" err))))))))
 
