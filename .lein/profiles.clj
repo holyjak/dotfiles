@@ -11,8 +11,7 @@
  :flowstorm {:dependencies [[com.github.jpmonettas/flow-storm-dbg "RELEASE"], [com.github.jpmonettas/flow-storm-inst "RELEASE"]]}
  :user {:signing {:gpg-key "5AA361214163F2CD"} ;; my keybase key
         :deploy-repositories [["clojars" {:url "https://repo.clojars.org" :creds :gpg}]]
-        :dependencies [
-                       [org.clojars.abhinav/snitch "RELEASE"] ; arg-capturing utils like let*, defn*
+        :dependencies [[org.clojars.abhinav/snitch "RELEASE"] ; arg-capturing utils like let*, defn*
 ;?                         [org.clojure/tools.nrepl "0.2.13"]
 ;;                       [org.clojars.gjahad/debug-repl "0.3.3"]
 ;;                       [im.chit/vinyasa "0.3.4"]
@@ -47,8 +46,7 @@
 ;;                         [clojure.tools.trace trace deftrace trace-forms trace-ns trace-vars untrace-ns untrace-vars]])
 ;;                     (require 'spyscope.core)
                      ]
-        :plugins [
-                  [lein-cljfmt "0.9.0"]
+        :plugins [[lein-cljfmt "0.9.0"]
                   [lein-count "1.0.9"] ; -> `lein count` to count LoC
  ;;                   [lein-virgil "0.1.8"] ; auto-recompile and reload .java files from :java-source-paths into the REPL
  ;;                   [lein-libdir "0.1.1"] ; dependencies to ./lib/
@@ -63,8 +61,8 @@
 ;;                  [lein-droid "0.3.5"]       	; for Android; !! req. JDK 6 as of 5/2013 !!!
 ;;                  [lein-ritz "0.7.0"]   		; for nrepl-inspect
 ;;                  [lein-marginalia "0.8.0"]
-                    [lein-ancient "0.6.15"]
-                    [lein-try "0.4.3"]
+                  [lein-ancient "0.6.15"]
+                  [lein-try "0.4.3"]
 ;;                  ;;[lein-alembic "0.1.0"]     ; make alembic available -> reload prj deps w/o restarting repl: (alembic.still/load-project)
 ;;                  [lein-clojuredocs "1.0.2"] ; Create clojuredocs-style doc
 ;;                  ;;[quickie "0.2.6"] ; autotest for clojure.test
@@ -73,30 +71,27 @@
 ;;                  [jonase/eastwood "0.2.1"] ; linter: lein eastwood
 ;;                  [lein-pprint "1.1.2"]
                   ]
-        :aliases {
-;;                  "slamhound" ["run" "-m" "slam.hound"] ;; => lein slamhound <file or dir>
+        :aliases {;;                  "slamhound" ["run" "-m" "slam.hound"] ;; => lein slamhound <file or dir>
                   }
         :repl-options {:nrepl-middleware
-                      [
- ;;                      ;inspector.middleware/wrap-inspect
+                       [;;                      ;inspector.middleware/wrap-inspect
  ;;                      ritz.nrepl.middleware.javadoc/wrap-javadoc
  ;;                      ritz.nrepl.middleware.apropos/wrap-apropos
  ;;                      ritz.nrepl.middleware.simple-complete/wrap-simple-complete
  ;;                      io.aviso.nrepl/pretty-middleware ;; pretty-print exceptions in repl
-                       ]}
+                        ]}
 ;       :mirrors {#"clojars" {:name "clojars mirror" :url "https://clojars-mirror.tcrawley.org/repo/"}}
- }
+        }
  :reveal {:dependencies [[vlaaad/reveal "1.3.216"]
                          [org.openjfx/javafx-controls "17"]]
           :repl-options {:nrepl-middleware [vlaaad.reveal.nrepl/middleware]}}
  :repl {:dependencies [[nrepl/nrepl "RELEASE"]]
-        #_#_
-        :dependencies [;[zcaudate/lucid.aether "1.4.4"]
+        #_#_:dependencies [;[zcaudate/lucid.aether "1.4.4"]
                        ;[zcaudate/lucid.core.inject "1.4.4"]
-                       [zcaudate/lucid.core.debug "1.4.7"]
-                       [zcaudate/lucid.package "1.4.7"]
+                           [zcaudate/lucid.core.debug "1.4.7"]
+                           [zcaudate/lucid.package "1.4.7"]
                        ;; needed for ns reload (i.e. resetting; see clojure.tools.namespace.reload [Clojure only as of 0.3.0alpha4)
-                       [org.clojure/tools.namespace "0.3.0-alpha4"]]
+                           [org.clojure/tools.namespace "0.3.0-alpha4"]]
  ;;       :plugins [[com.gfredericks/lein-shorthand "0.4.1"]]
         :global-vars {;*warn-on-reflection* true
                       *print-length* 200 ;; avoid infinite sequences in dev mode.
@@ -123,6 +118,8 @@
                        clojure.repl/source
                        ^:lazy lucid.package/pull ; add a project dependency to the REPL; ex: `(./pull [org.clojure/core.match "0.2.2"])`
                        clojure.tools.namespace.repl/refresh
-                       clojure.tools.namespace.repl/refresh-all]}
-        }
+                       clojure.tools.namespace.repl/refresh-all]}}
+ :scicloj-noj {:dependencies [[org.scicloj/noj "RELEASE"]
+                              ;; Clay needs newer fs than some other deps:
+                              [babashka/fs "RELEASE"]]} ; grouping of data science related libraries}}
  }
