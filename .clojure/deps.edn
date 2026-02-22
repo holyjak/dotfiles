@@ -44,19 +44,18 @@
  ;; Alias definitions
 
  :aliases
- {
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ {;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; MINE changes
   :dev/repl {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"
                         "-XX:+ShowCodeDetailsInExceptionMessages" ; For OpenJDK 14+ - show which variable was null in NPE
                         ]
-           #_#_:main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
+             #_#_:main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
   :dev/repl+dbg {:extra-deps {djblue/portal {:mvn/version "RELEASE"}
                               com.github.jpmonettas/flow-storm-dbg {:mvn/version "RELEASE"}, com.github.jpmonettas/flow-storm-inst {:mvn/version "RELEASE"}}
                  :jvm-opts ["-XX:-OmitStackTraceInFastThrow"
                             "-XX:+ShowCodeDetailsInExceptionMessages" ; For OpenJDK 14+ - show which variable was null in NPE
-                           ]
-             #_#_:main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
+                            ]
+                 #_#_:main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
   :dev/fulcro     {:override-deps {com.fulcrologic/fulcro     {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro"}}}
   :dev/fulcro-rad {:override-deps {com.fulcrologic/fulcro-rad {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad"}}}
   :dev/fulcro-rad-semantic-ui {:override-deps {com.fulcrologic/fulcro-rad-semantic-ui {:local/root "/Users/holyjak/Projects/external/fulcro-all/fulcro-rad-semantic-ui"}}}
